@@ -32,12 +32,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.dgvAddress = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAddress)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFooter
@@ -79,16 +79,21 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // dgvUsers
+            // dgvAddress
             // 
-            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Location = new System.Drawing.Point(0, 102);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.RowHeadersWidth = 62;
-            this.dgvUsers.RowTemplate.Height = 28;
-            this.dgvUsers.Size = new System.Drawing.Size(1626, 589);
-            this.dgvUsers.TabIndex = 5;
+            this.dgvAddress.AllowUserToAddRows = false;
+            this.dgvAddress.AllowUserToDeleteRows = false;
+            this.dgvAddress.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAddress.Location = new System.Drawing.Point(0, 102);
+            this.dgvAddress.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvAddress.MultiSelect = false;
+            this.dgvAddress.Name = "dgvAddress";
+            this.dgvAddress.ReadOnly = true;
+            this.dgvAddress.RowHeadersWidth = 62;
+            this.dgvAddress.RowTemplate.Height = 28;
+            this.dgvAddress.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAddress.Size = new System.Drawing.Size(1626, 589);
+            this.dgvAddress.TabIndex = 5;
             // 
             // lblTitle
             // 
@@ -96,7 +101,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(62, 24);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(371, 37);
+            this.lblTitle.Size = new System.Drawing.Size(259, 26);
             this.lblTitle.TabIndex = 9;
             this.lblTitle.Text = "Address Administration";
             // 
@@ -105,7 +110,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(942, 30);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(672, 35);
+            this.txtSearch.Size = new System.Drawing.Size(672, 26);
             this.txtSearch.TabIndex = 8;
             // 
             // btnSearch
@@ -122,15 +127,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlFooter);
-            this.Controls.Add(this.dgvUsers);
+            this.Controls.Add(this.dgvAddress);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSearch);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "AddressControl";
             this.Size = new System.Drawing.Size(1625, 789);
+            this.Load += new System.EventHandler(this.AddressControl_Load);
             this.pnlFooter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAddress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +148,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dgvUsers;
+        private System.Windows.Forms.DataGridView dgvAddress;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;

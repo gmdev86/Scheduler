@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using Scheduler.Core.Interfaces;
+using Scheduler.Core.Models;
 using Scheduler.Core.Services;
 using Scheduler.Core.Utility;
 
@@ -50,7 +51,7 @@ namespace Scheduler.Forms.Controls
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CustomerAdministration customerAdministration = new CustomerAdministration();
+            CustomerAdministration customerAdministration = new CustomerAdministration(new Customer());
             customerAdministration.ControlBox = false;
             if (this.ParentForm != null)
             {
@@ -72,6 +73,7 @@ namespace Scheduler.Forms.Controls
 
         private void CustomerAdministration_Closing(object sender, EventArgs e)
         {
+            LoadData();
             if (this.ParentForm != null)
             {
                 this.ParentForm.Enabled = true;

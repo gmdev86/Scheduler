@@ -223,6 +223,42 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer successfully added!.
+        /// </summary>
+        public static string CustomerAddedSuccess {
+            get {
+                return ResourceManager.GetString("CustomerAddedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Name: max character length 45.
+        /// </summary>
+        public static string CustomerNameMax {
+            get {
+                return ResourceManager.GetString("CustomerNameMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Name: Required.
+        /// </summary>
+        public static string CustomerNameRequired {
+            get {
+                return ResourceManager.GetString("CustomerNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer successfully updated!.
+        /// </summary>
+        public static string CustomerUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("CustomerUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Confirmation.
         /// </summary>
         public static string DeleteConfirmation {

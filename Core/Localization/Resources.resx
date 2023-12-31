@@ -171,6 +171,18 @@
   <data name="CountyRequired" xml:space="preserve">
     <value>Country: Required</value>
   </data>
+  <data name="CustomerAddedSuccess" xml:space="preserve">
+    <value>Customer successfully added!</value>
+  </data>
+  <data name="CustomerNameMax" xml:space="preserve">
+    <value>Customer Name: max character length 45</value>
+  </data>
+  <data name="CustomerNameRequired" xml:space="preserve">
+    <value>Customer Name: Required</value>
+  </data>
+  <data name="CustomerUpdatedSuccess" xml:space="preserve">
+    <value>Customer successfully updated!</value>
+  </data>
   <data name="DeleteConfirmation" xml:space="preserve">
     <value>Delete Confirmation</value>
   </data>
