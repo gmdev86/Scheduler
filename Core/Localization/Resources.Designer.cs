@@ -61,11 +61,164 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Address.
+        /// </summary>
+        public static string AddAdress {
+            get {
+                return ResourceManager.GetString("AddAdress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add City.
+        /// </summary>
+        public static string AddCity {
+            get {
+                return ResourceManager.GetString("AddCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Country.
+        /// </summary>
+        public static string AddCountry {
+            get {
+                return ResourceManager.GetString("AddCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address2: max character length 50.
+        /// </summary>
+        public static string Address2Max {
+            get {
+                return ResourceManager.GetString("Address2Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address successfully added!.
+        /// </summary>
+        public static string AddressAddedSuccess {
+            get {
+                return ResourceManager.GetString("AddressAddedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address: max character length 50.
+        /// </summary>
+        public static string AddressMax {
+            get {
+                return ResourceManager.GetString("AddressMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address: Required.
+        /// </summary>
+        public static string AddressRequired {
+            get {
+                return ResourceManager.GetString("AddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address successfully updated!.
+        /// </summary>
+        public static string AddressUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("AddressUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this item?.
         /// </summary>
         public static string AreYouSureDelete {
             get {
                 return ResourceManager.GetString("AreYouSureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City successfully added!.
+        /// </summary>
+        public static string CityAddedSuccess {
+            get {
+                return ResourceManager.GetString("CityAddedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City: max character length 50.
+        /// </summary>
+        public static string CityMax {
+            get {
+                return ResourceManager.GetString("CityMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City: Required.
+        /// </summary>
+        public static string CityRequired {
+            get {
+                return ResourceManager.GetString("CityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City successfully updated!.
+        /// </summary>
+        public static string CityUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("CityUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country successfully added!.
+        /// </summary>
+        public static string CountryAddedSuccess {
+            get {
+                return ResourceManager.GetString("CountryAddedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country: max character length 50.
+        /// </summary>
+        public static string CountryMax {
+            get {
+                return ResourceManager.GetString("CountryMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country: Required.
+        /// </summary>
+        public static string CountryRequired {
+            get {
+                return ResourceManager.GetString("CountryRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country successfully updated!.
+        /// </summary>
+        public static string CountryUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("CountryUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country: Required.
+        /// </summary>
+        public static string CountyRequired {
+            get {
+                return ResourceManager.GetString("CountyRequired", resourceCulture);
             }
         }
         
@@ -138,6 +291,51 @@ namespace Scheduler.Core.Localization {
         public static string PasswordRequired {
             get {
                 return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone: invalid format 000-0000.
+        /// </summary>
+        public static string PhoneInvalidFormat {
+            get {
+                return ResourceManager.GetString("PhoneInvalidFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone: max character length 20.
+        /// </summary>
+        public static string PhoneMax {
+            get {
+                return ResourceManager.GetString("PhoneMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone: Required.
+        /// </summary>
+        public static string PhoneRequired {
+            get {
+                return ResourceManager.GetString("PhoneRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code: max character length 10.
+        /// </summary>
+        public static string PostalCodeMax {
+            get {
+                return ResourceManager.GetString("PostalCodeMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code: Required.
+        /// </summary>
+        public static string PostalCodeRequired {
+            get {
+                return ResourceManager.GetString("PostalCodeRequired", resourceCulture);
             }
         }
         

@@ -2,8 +2,6 @@
 using Scheduler.Core.Services;
 using System;
 using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Scheduler.Forms.Controls

@@ -30,18 +30,18 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCalendar = new System.Windows.Forms.TabPage();
-            this.tpUsers = new System.Windows.Forms.TabPage();
-            this.tpCustomers = new System.Windows.Forms.TabPage();
-            this.tpAddress = new System.Windows.Forms.TabPage();
-            this.tpCity = new System.Windows.Forms.TabPage();
-            this.tpCountry = new System.Windows.Forms.TabPage();
-            this.tpReports = new System.Windows.Forms.TabPage();
             this.calendarControl1 = new Scheduler.Forms.Controls.CalendarControl();
+            this.tpUsers = new System.Windows.Forms.TabPage();
             this.usersControl1 = new Scheduler.Forms.Controls.UsersControl();
+            this.tpCustomers = new System.Windows.Forms.TabPage();
             this.customersControl1 = new Scheduler.Forms.Controls.CustomersControl();
+            this.tpAddress = new System.Windows.Forms.TabPage();
             this.addressControl1 = new Scheduler.Forms.Controls.AddressControl();
+            this.tpCity = new System.Windows.Forms.TabPage();
             this.cityControl1 = new Scheduler.Forms.Controls.CityControl();
+            this.tpCountry = new System.Windows.Forms.TabPage();
             this.countryControl1 = new Scheduler.Forms.Controls.CountryControl();
+            this.tpReports = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tpCalendar.SuspendLayout();
             this.tpUsers.SuspendLayout();
@@ -65,7 +65,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1828, 1668);
+            this.tabControl1.Size = new System.Drawing.Size(1828, 1421);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -75,10 +75,20 @@
             this.tpCalendar.Location = new System.Drawing.Point(4, 29);
             this.tpCalendar.Margin = new System.Windows.Forms.Padding(0);
             this.tpCalendar.Name = "tpCalendar";
-            this.tpCalendar.Size = new System.Drawing.Size(1820, 1635);
+            this.tpCalendar.Size = new System.Drawing.Size(1820, 1388);
             this.tpCalendar.TabIndex = 0;
             this.tpCalendar.Text = "Calendar";
             this.tpCalendar.UseVisualStyleBackColor = true;
+            // 
+            // calendarControl1
+            // 
+            this.calendarControl1.AutoSize = true;
+            this.calendarControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.calendarControl1.Location = new System.Drawing.Point(-4, 0);
+            this.calendarControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.calendarControl1.Name = "calendarControl1";
+            this.calendarControl1.Size = new System.Drawing.Size(1140, 1243);
+            this.calendarControl1.TabIndex = 0;
             // 
             // tpUsers
             // 
@@ -91,6 +101,14 @@
             this.tpUsers.Text = "Users";
             this.tpUsers.UseVisualStyleBackColor = true;
             // 
+            // usersControl1
+            // 
+            this.usersControl1.Location = new System.Drawing.Point(0, 0);
+            this.usersControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.usersControl1.Name = "usersControl1";
+            this.usersControl1.Size = new System.Drawing.Size(1626, 821);
+            this.usersControl1.TabIndex = 0;
+            // 
             // tpCustomers
             // 
             this.tpCustomers.Controls.Add(this.customersControl1);
@@ -100,6 +118,14 @@
             this.tpCustomers.TabIndex = 2;
             this.tpCustomers.Text = "Customers";
             this.tpCustomers.UseVisualStyleBackColor = true;
+            // 
+            // customersControl1
+            // 
+            this.customersControl1.Location = new System.Drawing.Point(0, 0);
+            this.customersControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.customersControl1.Name = "customersControl1";
+            this.customersControl1.Size = new System.Drawing.Size(1626, 793);
+            this.customersControl1.TabIndex = 0;
             // 
             // tpAddress
             // 
@@ -111,6 +137,14 @@
             this.tpAddress.Text = "Address";
             this.tpAddress.UseVisualStyleBackColor = true;
             // 
+            // addressControl1
+            // 
+            this.addressControl1.Location = new System.Drawing.Point(0, 0);
+            this.addressControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.addressControl1.Name = "addressControl1";
+            this.addressControl1.Size = new System.Drawing.Size(1625, 789);
+            this.addressControl1.TabIndex = 0;
+            // 
             // tpCity
             // 
             this.tpCity.Controls.Add(this.cityControl1);
@@ -120,6 +154,14 @@
             this.tpCity.TabIndex = 4;
             this.tpCity.Text = "City";
             this.tpCity.UseVisualStyleBackColor = true;
+            // 
+            // cityControl1
+            // 
+            this.cityControl1.Location = new System.Drawing.Point(0, 0);
+            this.cityControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.cityControl1.Name = "cityControl1";
+            this.cityControl1.Size = new System.Drawing.Size(1559, 777);
+            this.cityControl1.TabIndex = 0;
             // 
             // tpCountry
             // 
@@ -131,6 +173,14 @@
             this.tpCountry.Text = "Country";
             this.tpCountry.UseVisualStyleBackColor = true;
             // 
+            // countryControl1
+            // 
+            this.countryControl1.Location = new System.Drawing.Point(0, 0);
+            this.countryControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.countryControl1.Name = "countryControl1";
+            this.countryControl1.Size = new System.Drawing.Size(1626, 800);
+            this.countryControl1.TabIndex = 0;
+            // 
             // tpReports
             // 
             this.tpReports.Location = new System.Drawing.Point(4, 29);
@@ -140,63 +190,13 @@
             this.tpReports.Text = "Reports";
             this.tpReports.UseVisualStyleBackColor = true;
             // 
-            // calendarControl1
-            // 
-            this.calendarControl1.AutoSize = true;
-            this.calendarControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.calendarControl1.Location = new System.Drawing.Point(-4, 0);
-            this.calendarControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.calendarControl1.Name = "calendarControl1";
-            this.calendarControl1.Size = new System.Drawing.Size(1140, 1243);
-            this.calendarControl1.TabIndex = 0;
-            // 
-            // usersControl2
-            // 
-            this.usersControl1.Location = new System.Drawing.Point(0, 0);
-            this.usersControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.usersControl1.Name = "usersControl2";
-            this.usersControl1.Size = new System.Drawing.Size(1626, 821);
-            this.usersControl1.TabIndex = 0;
-            // 
-            // customersControl1
-            // 
-            this.customersControl1.Location = new System.Drawing.Point(0, 0);
-            this.customersControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.customersControl1.Name = "customersControl1";
-            this.customersControl1.Size = new System.Drawing.Size(1626, 793);
-            this.customersControl1.TabIndex = 0;
-            // 
-            // addressControl1
-            // 
-            this.addressControl1.Location = new System.Drawing.Point(0, 0);
-            this.addressControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(1625, 789);
-            this.addressControl1.TabIndex = 0;
-            // 
-            // cityControl1
-            // 
-            this.cityControl1.Location = new System.Drawing.Point(0, 0);
-            this.cityControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.cityControl1.Name = "cityControl1";
-            this.cityControl1.Size = new System.Drawing.Size(1559, 777);
-            this.cityControl1.TabIndex = 0;
-            // 
-            // countryControl1
-            // 
-            this.countryControl1.Location = new System.Drawing.Point(0, 0);
-            this.countryControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.countryControl1.Name = "countryControl1";
-            this.countryControl1.Size = new System.Drawing.Size(1626, 800);
-            this.countryControl1.TabIndex = 0;
-            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1828, 1668);
+            this.ClientSize = new System.Drawing.Size(1828, 1421);
             this.Controls.Add(this.tabControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

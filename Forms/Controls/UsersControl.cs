@@ -38,7 +38,7 @@ namespace Scheduler.Forms.Controls
             dgvUsers.CellFormatting += dgvUsers_CellFormatting;
         }
 
-        public void LoadData()
+        private void LoadData()
         {
             DataTable usersDataTable = _dataService.GetAllUsers();
             _usersBindingSource.DataSource = usersDataTable;

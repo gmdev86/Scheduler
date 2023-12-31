@@ -21,7 +21,7 @@ namespace Scheduler.Forms.Controls
                 btnAddEvent.Font = awesomeFont;
                 btnAddEvent.Text = char.ConvertFromUtf32((int)IconType.PlusCircle);
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 

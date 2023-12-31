@@ -106,6 +106,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Models\SelectListItem.cs" />
     <Compile Include="Core\Services\FontService.cs" />
     <Compile Include="Core\Utility\DateTimeConverter.cs" />
     <Compile Include="Core\Utility\Dialog.cs" />
@@ -120,6 +121,12 @@
     </Compile>
     <Compile Include="Forms\Controls\AddressControl.Designer.cs">
       <DependentUpon>AddressControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\AddressModifyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\AddressModifyControl.Designer.cs">
+      <DependentUpon>AddressModifyControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\BlankDayControl.cs">
       <SubType>UserControl</SubType>
@@ -147,11 +154,23 @@
     <Compile Include="Forms\Controls\CityControl.Designer.cs">
       <DependentUpon>CityControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\CityModifyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CityModifyControl.Designer.cs">
+      <DependentUpon>CityModifyControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\CountryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Controls\CountryControl.Designer.cs">
       <DependentUpon>CountryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\CountryModifyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CountryModifyControl.Designer.cs">
+      <DependentUpon>CountryModifyControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\CustomersControl.cs">
       <SubType>UserControl</SubType>
@@ -164,6 +183,9 @@
     </Compile>
     <Compile Include="Forms\Controls\DayControl.Designer.cs">
       <DependentUpon>DayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\PhoneNumberTextBox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\Controls\ReportsControl.cs">
       <SubType>UserControl</SubType>
@@ -182,6 +204,12 @@
     </Compile>
     <Compile Include="Forms\Controls\UsersControl.Designer.cs">
       <DependentUpon>UsersControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomerAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomerAdministration.Designer.cs">
+      <DependentUpon>CustomerAdministration.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
@@ -213,6 +241,9 @@
     <EmbeddedResource Include="Forms\Controls\AddressControl.resx">
       <DependentUpon>AddressControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\AddressModifyControl.resx">
+      <DependentUpon>AddressModifyControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\BlankDayControl.resx">
       <DependentUpon>BlankDayControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,8 +253,14 @@
     <EmbeddedResource Include="Forms\Controls\CityControl.resx">
       <DependentUpon>CityControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\CityModifyControl.resx">
+      <DependentUpon>CityModifyControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\CountryControl.resx">
       <DependentUpon>CountryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\CountryModifyControl.resx">
+      <DependentUpon>CountryModifyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\CustomersControl.resx">
       <DependentUpon>CustomersControl.cs</DependentUpon>
@@ -239,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\UsersControl.resx">
       <DependentUpon>UsersControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomerAdministration.resx">
+      <DependentUpon>CustomerAdministration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
