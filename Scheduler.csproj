@@ -37,8 +37,6 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Devart.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=09af7300eec23701" />
-    <Reference Include="Devart.Data.MySql, Version=9.2.0.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="Google.Protobuf, Version=3.21.9.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.21.9\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -102,12 +100,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Enums\IconType.cs" />
+    <Compile Include="Core\Enums\Tabs.cs" />
+    <Compile Include="Core\Localization\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\Services\FontService.cs" />
+    <Compile Include="Core\Utility\DateTimeConverter.cs" />
+    <Compile Include="Core\Utility\Dialog.cs" />
     <Compile Include="Forms\Appointments.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Appointments.Designer.cs">
       <DependentUpon>Appointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\AddressControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\AddressControl.Designer.cs">
+      <DependentUpon>AddressControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\BlankDayControl.cs">
       <SubType>UserControl</SubType>
@@ -129,11 +141,35 @@
     <Compile Include="Forms\Controls\CircleLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Forms\Controls\CityControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CityControl.Designer.cs">
+      <DependentUpon>CityControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\CountryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CountryControl.Designer.cs">
+      <DependentUpon>CountryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\CustomersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\CustomersControl.Designer.cs">
+      <DependentUpon>CustomersControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\DayControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Controls\DayControl.Designer.cs">
       <DependentUpon>DayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\ReportsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\ReportsControl.Designer.cs">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\ResizableAppointment.cs">
       <SubType>Component</SubType>
@@ -159,16 +195,38 @@
     <Compile Include="Forms\Manager.Designer.cs">
       <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserAdministration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserAdministration.Designer.cs">
+      <DependentUpon>UserAdministration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Core\Localization\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\AddressControl.resx">
+      <DependentUpon>AddressControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\BlankDayControl.resx">
       <DependentUpon>BlankDayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\CalendarControl.resx">
       <DependentUpon>CalendarControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\CityControl.resx">
+      <DependentUpon>CityControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\CountryControl.resx">
+      <DependentUpon>CountryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\CustomersControl.resx">
+      <DependentUpon>CustomersControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\DayControl.resx">
       <DependentUpon>DayControl.cs</DependentUpon>
@@ -187,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manager.resx">
       <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserAdministration.resx">
+      <DependentUpon>UserAdministration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -211,6 +272,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

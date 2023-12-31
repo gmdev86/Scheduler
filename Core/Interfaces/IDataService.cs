@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Scheduler.Core.Models;
+using System.Data;
 
 namespace Scheduler.Core.Interfaces
 {
-    internal interface IDataService
+    public interface IDataService
     {
+        DataTable GetAllUsers();
+        void CreateUser(User user);
+        User GetUserByUsername(string username);
+        void UpdateUser(User user);
+        void DeleteUser(int userId);
     }
 }

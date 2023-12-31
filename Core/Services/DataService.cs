@@ -1,62 +1,56 @@
 ﻿using MySql.Data.MySqlClient;
-using Scheduler.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows.Forms;
+using Scheduler.Core.Interfaces;
+using Scheduler.Core.Models;
 
 namespace Scheduler.Core.Services
 {
-    public class DataService
+    public class DataService : IDataService
     {
-        private string connectionString;
+        private string connectionString = "Server=localhost;Port=3306;Database=schedule;Uid=test;Pwd=test;";
 
         public DataService()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
-        }
-        public void test()
-        {
-            // Connection string
-            string connectionString = "Server=localhost;Port=3306;Database=schedule;Uid=test;Pwd=test;";
-
-            // Create MySqlConnection
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            try
             {
-                try
-                {
-                    // Open the connection
-                    connection.Open();
-
-                    // Connection successful
-                    Console.WriteLine("Connected to MySQL Database!");
-
-                    // Example query
-                    string query = "SELECT * FROM user";
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                // Process the retrieved data
-                                Console.WriteLine($"Column1: {reader["Column1"]}, Column2: {reader["Column2"]}");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions that occurred during the connection attempt or query execution
-                    Console.WriteLine($"Error: {ex.Message}");
-                }
+                connectionString = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
+            }
+            catch (Exception e)
+            {
             }
         }
 
-        public void InsertUser(User user)
+        #region User Methods
+
+        public DataTable GetAllUsers()
+        {
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM `user`";
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataTable;
+        }
+        
+        public void CreateUser(User user)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -78,17 +72,16 @@ namespace Scheduler.Core.Services
                         command.Parameters.AddWithValue("@LastUpdateBy", user.LastUpdateBy);
 
                         command.ExecuteNonQuery();
-                        MessageBox.Show("User added.", "Adding User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error inserting user: {ex.Message}");
+                    Console.WriteLine($"Error creating user: {ex.Message}");
                     // Handle the exception as needed
                 }
             }
         }
-
+        
         public User GetUserByUsername(string username)
         {
             User user = null;
@@ -108,7 +101,7 @@ namespace Scheduler.Core.Services
                         {
                             if (reader.Read())
                             {
-                                user = new User
+                                user = new User()
                                 {
                                     UserId = reader.GetInt32("userId"),
                                     UserName = reader.GetString("userName"),
@@ -132,8 +125,8 @@ namespace Scheduler.Core.Services
 
             return user;
         }
-
-        public void UpdateUser(User updatedUser)
+        
+        public void UpdateUser(User user)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -148,14 +141,14 @@ namespace Scheduler.Core.Services
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@UserName", updatedUser.UserName);
-                        command.Parameters.AddWithValue("@Password", updatedUser.Password);
-                        command.Parameters.AddWithValue("@Active", updatedUser.Active);
-                        command.Parameters.AddWithValue("@CreateDate", updatedUser.CreateDate);
-                        command.Parameters.AddWithValue("@CreatedBy", updatedUser.CreatedBy);
-                        command.Parameters.AddWithValue("@LastUpdate", updatedUser.LastUpdate);
-                        command.Parameters.AddWithValue("@LastUpdateBy", updatedUser.LastUpdateBy);
-                        command.Parameters.AddWithValue("@UserId", updatedUser.UserId);
+                        command.Parameters.AddWithValue("@UserName", user.UserName);
+                        command.Parameters.AddWithValue("@Password", user.Password);
+                        command.Parameters.AddWithValue("@Active", user.Active);
+                        command.Parameters.AddWithValue("@CreateDate", user.CreateDate);
+                        command.Parameters.AddWithValue("@CreatedBy", user.CreatedBy);
+                        command.Parameters.AddWithValue("@LastUpdate", user.LastUpdate);
+                        command.Parameters.AddWithValue("@LastUpdateBy", user.LastUpdateBy);
+                        command.Parameters.AddWithValue("@UserId", user.UserId);
 
                         command.ExecuteNonQuery();
                     }
@@ -167,5 +160,32 @@ namespace Scheduler.Core.Services
                 }
             }
         }
+        
+        public void DeleteUser(int userId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "DELETE FROM user WHERE userId = @UserId";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserId", userId);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        #endregion
+        
     }
 }
