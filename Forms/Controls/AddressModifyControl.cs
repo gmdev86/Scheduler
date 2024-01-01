@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Scheduler.Core.Interfaces;
@@ -66,6 +67,18 @@ namespace Scheduler.Forms.Controls
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
             LoadCityComboBox();
+            if (_address.AddressId > 0)
+            {
+                txtAddress.Text = _address.AddressLine1;
+                txtAddress2.Text = _address.AddressLine2;
+                var itemToSelect = _cityListItems.FirstOrDefault(x => x.Id == _address.CityId);
+                if (itemToSelect != null)
+                {
+                    cbCity.SelectedItem = itemToSelect;
+                }
+                txtPostalCode.Text = _address.PostalCode;
+                txtPhoneNumber.Text = _address.Phone;
+            }
         }
 
         private void LoadCities()

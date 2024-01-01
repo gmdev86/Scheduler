@@ -49,12 +49,20 @@ namespace Scheduler.Forms.Controls
         {
             UserAdministration userAdministration = new UserAdministration(new User(), _dataService);
             userAdministration.FormClosed += UserAdministration_FormClosed;
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = false;
+            }
             userAdministration.Show();
         }
 
         private void UserAdministration_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoadData();
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
         }
 
         private void dgvUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -88,6 +96,10 @@ namespace Scheduler.Forms.Controls
                 };
                 UserAdministration userAdministration = new UserAdministration(user, _dataService);
                 userAdministration.FormClosed += UserAdministration_FormClosed;
+                if (this.ParentForm != null)
+                {
+                    this.ParentForm.Enabled = false;
+                }
                 userAdministration.Show();
             }
             else
@@ -111,7 +123,14 @@ namespace Scheduler.Forms.Controls
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"{Resources.Error}: {ex.Message}", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (ex.Message.Contains("CONSTRAINT"))
+                        {
+                            MessageBox.Show($"{Resources.UserConstraintMessage}", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"{Resources.Error}: {ex.Message}", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

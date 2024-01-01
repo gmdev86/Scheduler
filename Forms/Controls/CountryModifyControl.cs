@@ -63,6 +63,10 @@ namespace Scheduler.Forms.Controls
             _dataService = new DataService();
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
+            if (_country.CountryId > 0)
+            {
+                txtCountry.Text = _country.CountryName;
+            }
         }
 
         private bool IsValid()

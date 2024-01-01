@@ -65,7 +65,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(505, 475);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(337, 309);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pnlFooter
@@ -75,17 +75,18 @@
             this.pnlFooter.Controls.Add(this.btnSave);
             this.pnlFooter.Controls.Add(this.btnCancel);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 413);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 269);
             this.pnlFooter.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(505, 62);
+            this.pnlFooter.Size = new System.Drawing.Size(337, 40);
             this.pnlFooter.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(264, 7);
+            this.btnSave.Location = new System.Drawing.Point(176, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(107, 45);
+            this.btnSave.Size = new System.Drawing.Size(71, 29);
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -93,9 +94,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(393, 7);
+            this.btnCancel.Location = new System.Drawing.Point(262, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 45);
+            this.btnCancel.Size = new System.Drawing.Size(65, 29);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -111,7 +113,7 @@
             this.pnlValidationErrors.Location = new System.Drawing.Point(0, 0);
             this.pnlValidationErrors.Margin = new System.Windows.Forms.Padding(0);
             this.pnlValidationErrors.Name = "pnlValidationErrors";
-            this.pnlValidationErrors.Size = new System.Drawing.Size(505, 39);
+            this.pnlValidationErrors.Size = new System.Drawing.Size(337, 25);
             this.pnlValidationErrors.TabIndex = 2;
             // 
             // lblValidationErrors
@@ -119,10 +121,10 @@
             this.lblValidationErrors.AutoSize = true;
             this.lblValidationErrors.BackColor = System.Drawing.Color.White;
             this.lblValidationErrors.ForeColor = System.Drawing.Color.Red;
-            this.lblValidationErrors.Location = new System.Drawing.Point(12, 9);
-            this.lblValidationErrors.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.lblValidationErrors.Location = new System.Drawing.Point(8, 6);
+            this.lblValidationErrors.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblValidationErrors.Name = "lblValidationErrors";
-            this.lblValidationErrors.Size = new System.Drawing.Size(126, 20);
+            this.lblValidationErrors.Size = new System.Drawing.Size(83, 13);
             this.lblValidationErrors.TabIndex = 0;
             this.lblValidationErrors.Text = "Validation Errors";
             // 
@@ -136,26 +138,28 @@
             this.pnlBody.Controls.Add(this.lblUsername);
             this.pnlBody.Controls.Add(this.txtPassword);
             this.pnlBody.Controls.Add(this.txtUsername);
-            this.pnlBody.Location = new System.Drawing.Point(0, 39);
+            this.pnlBody.Location = new System.Drawing.Point(0, 25);
             this.pnlBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(504, 287);
+            this.pnlBody.Size = new System.Drawing.Size(336, 187);
             this.pnlBody.TabIndex = 0;
             // 
             // lblConfirm
             // 
             this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Location = new System.Drawing.Point(280, 132);
+            this.lblConfirm.Location = new System.Drawing.Point(187, 86);
+            this.lblConfirm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(147, 20);
+            this.lblConfirm.Size = new System.Drawing.Size(98, 13);
             this.lblConfirm.TabIndex = 4;
             this.lblConfirm.Text = "Confirm Password*:";
             // 
             // txtPasswordConfirm
             // 
-            this.txtPasswordConfirm.Location = new System.Drawing.Point(274, 165);
+            this.txtPasswordConfirm.Location = new System.Drawing.Point(183, 107);
+            this.txtPasswordConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
-            this.txtPasswordConfirm.Size = new System.Drawing.Size(204, 26);
+            this.txtPasswordConfirm.Size = new System.Drawing.Size(137, 20);
             this.txtPasswordConfirm.TabIndex = 5;
             this.txtPasswordConfirm.UseSystemPasswordChar = true;
             // 
@@ -164,9 +168,10 @@
             this.cbActive.AutoSize = true;
             this.cbActive.Checked = true;
             this.cbActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbActive.Location = new System.Drawing.Point(33, 236);
+            this.cbActive.Location = new System.Drawing.Point(22, 153);
+            this.cbActive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbActive.Name = "cbActive";
-            this.cbActive.Size = new System.Drawing.Size(71, 24);
+            this.cbActive.Size = new System.Drawing.Size(56, 17);
             this.cbActive.TabIndex = 6;
             this.cbActive.Text = "Active";
             this.cbActive.UseVisualStyleBackColor = true;
@@ -174,44 +179,50 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(29, 130);
+            this.lblPassword.Location = new System.Drawing.Point(19, 84);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(88, 20);
+            this.lblPassword.Size = new System.Drawing.Size(60, 13);
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Password*:";
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(29, 30);
+            this.lblUsername.Location = new System.Drawing.Point(19, 20);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(93, 20);
+            this.lblUsername.Size = new System.Drawing.Size(62, 13);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "Username*:";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(33, 165);
+            this.txtPassword.Location = new System.Drawing.Point(22, 107);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(204, 26);
+            this.txtPassword.Size = new System.Drawing.Size(137, 20);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(33, 69);
+            this.txtUsername.Location = new System.Drawing.Point(22, 45);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(204, 26);
+            this.txtUsername.Size = new System.Drawing.Size(137, 20);
             this.txtUsername.TabIndex = 1;
             // 
             // UserAdministration
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(505, 475);
+            this.ClientSize = new System.Drawing.Size(337, 309);
+            this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UserAdministration";

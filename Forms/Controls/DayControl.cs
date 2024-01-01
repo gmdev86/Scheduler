@@ -12,6 +12,14 @@ namespace Scheduler.Forms.Controls
         private int _month;
         private int _day;
 
+        public DayControl()
+        {
+            InitializeComponent();
+            _year = DateTime.Now.Year;
+            _month = DateTime.Now.Month;
+            _day = DateTime.Now.Day;
+        }
+
         public DayControl(int year, int month, int day, bool allowAddEvent = true)
         {
             InitializeComponent();
@@ -23,6 +31,8 @@ namespace Scheduler.Forms.Controls
             }
             catch (Exception)
             {
+                btnAddEvent.Font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Regular);
+                btnAddEvent.Text = " + ";
             }
 
             _year = year;

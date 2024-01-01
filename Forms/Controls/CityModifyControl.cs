@@ -1,6 +1,7 @@
 ﻿using Scheduler.Core.Localization;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using Scheduler.Core.Models;
 using Scheduler.Core.Interfaces;
@@ -37,6 +38,15 @@ namespace Scheduler.Forms.Controls
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
             LoadCountryComboBox();
+            if (_city.CityId > 0)
+            {
+                txtCity.Text = _city.CityName;
+                var itemToSelect = _countryListItems.FirstOrDefault(x => x.Id == _city.CountryId);
+                if (itemToSelect != null)
+                {
+                    cbCountry.SelectedItem = itemToSelect;
+                }
+            }
         }
 
         private void LoadCountries()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Scheduler.Core.Interfaces;
@@ -60,6 +61,16 @@ namespace Scheduler.Forms
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = String.Empty;
             LoadAddressComboBox();
+            if (_customer.CustomerId > 0)
+            {
+                txtCustomerName.Text = _customer.CustomerName;
+                cbActive.Checked = _customer.IsActive;
+                var itemToSelect = _addressListItems.FirstOrDefault(x => x.Id == _customer.AddressId);
+                if (itemToSelect != null)
+                {
+                    cbAddress.SelectedItem = itemToSelect;
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

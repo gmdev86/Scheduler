@@ -106,11 +106,29 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to Delete Address: This address is associated with one or more customers and cannot be deleted. Please remove or update the associated customer records before attempting to delete this address..
+        /// </summary>
+        public static string AddressConstraintMessage {
+            get {
+                return ResourceManager.GetString("AddressConstraintMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address: max character length 50.
         /// </summary>
         public static string AddressMax {
             get {
                 return ResourceManager.GetString("AddressMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address not selected.
+        /// </summary>
+        public static string AddressNotSelected {
+            get {
+                return ResourceManager.GetString("AddressNotSelected", resourceCulture);
             }
         }
         
@@ -151,11 +169,29 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to Delete City: This city is associated with one or more addresses and cannot be deleted. Please remove or update the associated address records before attempting to delete this city..
+        /// </summary>
+        public static string CityConstraintMessage {
+            get {
+                return ResourceManager.GetString("CityConstraintMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City: max character length 50.
         /// </summary>
         public static string CityMax {
             get {
                 return ResourceManager.GetString("CityMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City not selected.
+        /// </summary>
+        public static string CityNotSelected {
+            get {
+                return ResourceManager.GetString("CityNotSelected", resourceCulture);
             }
         }
         
@@ -187,11 +223,29 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to Delete Country: This country is associated with one or more cities and cannot be deleted. Please remove or update the associated city records before attempting to delete this country..
+        /// </summary>
+        public static string CountryConstraintMessage {
+            get {
+                return ResourceManager.GetString("CountryConstraintMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country: max character length 50.
         /// </summary>
         public static string CountryMax {
             get {
                 return ResourceManager.GetString("CountryMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country not selected.
+        /// </summary>
+        public static string CountryNotSelected {
+            get {
+                return ResourceManager.GetString("CountryNotSelected", resourceCulture);
             }
         }
         
@@ -232,6 +286,15 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to Delete Customer: This customer is associated with one or more appointments and cannot be deleted. Please remove or update the associated appointment records before attempting to delete this customer..
+        /// </summary>
+        public static string CustomerConstraintMessage {
+            get {
+                return ResourceManager.GetString("CustomerConstraintMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer Name: max character length 45.
         /// </summary>
         public static string CustomerNameMax {
@@ -246,6 +309,15 @@ namespace Scheduler.Core.Localization {
         public static string CustomerNameRequired {
             get {
                 return ResourceManager.GetString("CustomerNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer not selected.
+        /// </summary>
+        public static string CustomerNotSelected {
+            get {
+                return ResourceManager.GetString("CustomerNotSelected", resourceCulture);
             }
         }
         
@@ -282,6 +354,42 @@ namespace Scheduler.Core.Localization {
         public static string FailedToSave {
             get {
                 return ResourceManager.GetString("FailedToSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Addresses found..
+        /// </summary>
+        public static string NoAddressesFound {
+            get {
+                return ResourceManager.GetString("NoAddressesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No City found..
+        /// </summary>
+        public static string NoCityFound {
+            get {
+                return ResourceManager.GetString("NoCityFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Country found..
+        /// </summary>
+        public static string NoCountryFound {
+            get {
+                return ResourceManager.GetString("NoCountryFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Customers found..
+        /// </summary>
+        public static string NoCustomerFound {
+            get {
+                return ResourceManager.GetString("NoCustomerFound", resourceCulture);
             }
         }
         
@@ -376,6 +484,42 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select Address..
+        /// </summary>
+        public static string SelectAddress {
+            get {
+                return ResourceManager.GetString("SelectAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select City..
+        /// </summary>
+        public static string SelectCity {
+            get {
+                return ResourceManager.GetString("SelectCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please selecte Country.
+        /// </summary>
+        public static string SelectCountry {
+            get {
+                return ResourceManager.GetString("SelectCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select Customer..
+        /// </summary>
+        public static string SelectCustomer {
+            get {
+                return ResourceManager.GetString("SelectCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select User..
         /// </summary>
         public static string SelectUser {
@@ -390,6 +534,15 @@ namespace Scheduler.Core.Localization {
         public static string UserAddedSuccess {
             get {
                 return ResourceManager.GetString("UserAddedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to Delete User: This user is associated with one or more appointments and cannot be deleted. Please remove or update the associated appointment records before attempting to delete this user..
+        /// </summary>
+        public static string UserConstraintMessage {
+            get {
+                return ResourceManager.GetString("UserConstraintMessage", resourceCulture);
             }
         }
         

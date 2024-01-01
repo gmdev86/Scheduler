@@ -132,8 +132,14 @@
   <data name="AddressAddedSuccess" xml:space="preserve">
     <value>Address successfully added!</value>
   </data>
+  <data name="AddressConstraintMessage" xml:space="preserve">
+    <value>Unable to Delete Address: This address is associated with one or more customers and cannot be deleted. Please remove or update the associated customer records before attempting to delete this address.</value>
+  </data>
   <data name="AddressMax" xml:space="preserve">
     <value>Address: max character length 50</value>
+  </data>
+  <data name="AddressNotSelected" xml:space="preserve">
+    <value>Address not selected</value>
   </data>
   <data name="AddressRequired" xml:space="preserve">
     <value>Address: Required</value>
@@ -147,8 +153,14 @@
   <data name="CityAddedSuccess" xml:space="preserve">
     <value>City successfully added!</value>
   </data>
+  <data name="CityConstraintMessage" xml:space="preserve">
+    <value>Unable to Delete City: This city is associated with one or more addresses and cannot be deleted. Please remove or update the associated address records before attempting to delete this city.</value>
+  </data>
   <data name="CityMax" xml:space="preserve">
     <value>City: max character length 50</value>
+  </data>
+  <data name="CityNotSelected" xml:space="preserve">
+    <value>City not selected</value>
   </data>
   <data name="CityRequired" xml:space="preserve">
     <value>City: Required</value>
@@ -159,8 +171,14 @@
   <data name="CountryAddedSuccess" xml:space="preserve">
     <value>Country successfully added!</value>
   </data>
+  <data name="CountryConstraintMessage" xml:space="preserve">
+    <value>Unable to Delete Country: This country is associated with one or more cities and cannot be deleted. Please remove or update the associated city records before attempting to delete this country.</value>
+  </data>
   <data name="CountryMax" xml:space="preserve">
     <value>Country: max character length 50</value>
+  </data>
+  <data name="CountryNotSelected" xml:space="preserve">
+    <value>Country not selected</value>
   </data>
   <data name="CountryRequired" xml:space="preserve">
     <value>Country: Required</value>
@@ -174,11 +192,17 @@
   <data name="CustomerAddedSuccess" xml:space="preserve">
     <value>Customer successfully added!</value>
   </data>
+  <data name="CustomerConstraintMessage" xml:space="preserve">
+    <value>Unable to Delete Customer: This customer is associated with one or more appointments and cannot be deleted. Please remove or update the associated appointment records before attempting to delete this customer.</value>
+  </data>
   <data name="CustomerNameMax" xml:space="preserve">
     <value>Customer Name: max character length 45</value>
   </data>
   <data name="CustomerNameRequired" xml:space="preserve">
     <value>Customer Name: Required</value>
+  </data>
+  <data name="CustomerNotSelected" xml:space="preserve">
+    <value>Customer not selected</value>
   </data>
   <data name="CustomerUpdatedSuccess" xml:space="preserve">
     <value>Customer successfully updated!</value>
@@ -191,6 +215,18 @@
   </data>
   <data name="FailedToSave" xml:space="preserve">
     <value>Failed to save.</value>
+  </data>
+  <data name="NoAddressesFound" xml:space="preserve">
+    <value>No Addresses found.</value>
+  </data>
+  <data name="NoCityFound" xml:space="preserve">
+    <value>No City found.</value>
+  </data>
+  <data name="NoCountryFound" xml:space="preserve">
+    <value>No Country found.</value>
+  </data>
+  <data name="NoCustomerFound" xml:space="preserve">
+    <value>No Customers found.</value>
   </data>
   <data name="NoResults" xml:space="preserve">
     <value>No Results</value>
@@ -222,11 +258,26 @@
   <data name="PostalCodeRequired" xml:space="preserve">
     <value>Postal Code: Required</value>
   </data>
+  <data name="SelectAddress" xml:space="preserve">
+    <value>Please select Address.</value>
+  </data>
+  <data name="SelectCity" xml:space="preserve">
+    <value>Please select City.</value>
+  </data>
+  <data name="SelectCountry" xml:space="preserve">
+    <value>Please selecte Country</value>
+  </data>
+  <data name="SelectCustomer" xml:space="preserve">
+    <value>Please select Customer.</value>
+  </data>
   <data name="SelectUser" xml:space="preserve">
     <value>Please select User.</value>
   </data>
   <data name="UserAddedSuccess" xml:space="preserve">
     <value>User successfully added!</value>
+  </data>
+  <data name="UserConstraintMessage" xml:space="preserve">
+    <value>Unable to Delete User: This user is associated with one or more appointments and cannot be deleted. Please remove or update the associated appointment records before attempting to delete this user.</value>
   </data>
   <data name="UserNameMax" xml:space="preserve">
     <value>Username: max character length 50</value>

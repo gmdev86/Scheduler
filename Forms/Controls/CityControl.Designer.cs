@@ -32,12 +32,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.dgvCity = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlFooter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCity)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFooter
@@ -46,91 +46,107 @@
             this.pnlFooter.Controls.Add(this.btnDelete);
             this.pnlFooter.Controls.Add(this.btnModify);
             this.pnlFooter.Controls.Add(this.btnAdd);
-            this.pnlFooter.Location = new System.Drawing.Point(-68, 676);
+            this.pnlFooter.Location = new System.Drawing.Point(-45, 439);
             this.pnlFooter.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1626, 100);
+            this.pnlFooter.Size = new System.Drawing.Size(1084, 65);
             this.pnlFooter.TabIndex = 6;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1444, 19);
+            this.btnDelete.Location = new System.Drawing.Point(963, 12);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(140, 59);
+            this.btnDelete.Size = new System.Drawing.Size(93, 38);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(1280, 19);
+            this.btnModify.Location = new System.Drawing.Point(853, 12);
+            this.btnModify.Margin = new System.Windows.Forms.Padding(2);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(137, 59);
+            this.btnModify.Size = new System.Drawing.Size(91, 38);
             this.btnModify.TabIndex = 1;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(1101, 17);
+            this.btnAdd.Location = new System.Drawing.Point(734, 11);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(139, 61);
+            this.btnAdd.Size = new System.Drawing.Size(93, 40);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // dgvUsers
+            // dgvCity
             // 
-            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Location = new System.Drawing.Point(-68, 87);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.RowHeadersWidth = 62;
-            this.dgvUsers.RowTemplate.Height = 28;
-            this.dgvUsers.Size = new System.Drawing.Size(1626, 589);
-            this.dgvUsers.TabIndex = 5;
+            this.dgvCity.AllowUserToAddRows = false;
+            this.dgvCity.AllowUserToDeleteRows = false;
+            this.dgvCity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCity.Location = new System.Drawing.Point(0, 56);
+            this.dgvCity.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvCity.MultiSelect = false;
+            this.dgvCity.Name = "dgvCity";
+            this.dgvCity.ReadOnly = true;
+            this.dgvCity.RowHeadersWidth = 62;
+            this.dgvCity.RowTemplate.Height = 28;
+            this.dgvCity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCity.Size = new System.Drawing.Size(1039, 383);
+            this.dgvCity.TabIndex = 5;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(39, 25);
+            this.lblTitle.Location = new System.Drawing.Point(26, 16);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(456, 56);
+            this.lblTitle.Size = new System.Drawing.Size(214, 26);
             this.lblTitle.TabIndex = 9;
             this.lblTitle.Text = "City Administration";
             // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(874, 29);
+            this.txtSearch.Location = new System.Drawing.Point(583, 19);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(672, 35);
+            this.txtSearch.Size = new System.Drawing.Size(449, 26);
             this.txtSearch.TabIndex = 8;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(716, 29);
+            this.btnSearch.Location = new System.Drawing.Point(477, 19);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(152, 35);
+            this.btnSearch.Size = new System.Drawing.Size(101, 23);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // CityControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pnlFooter);
-            this.Controls.Add(this.dgvUsers);
+            this.Controls.Add(this.dgvCity);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSearch);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CityControl";
-            this.Size = new System.Drawing.Size(1559, 777);
+            this.Size = new System.Drawing.Size(1039, 505);
+            this.Load += new System.EventHandler(this.CityControl_Load);
             this.pnlFooter.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,7 +158,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dgvUsers;
+        private System.Windows.Forms.DataGridView dgvCity;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
