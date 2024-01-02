@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Drawing;
+using System.ComponentModel;
 using System.Windows.Forms;
-using Scheduler.Core.Enums;
-using Scheduler.Core.Services;
+using Scheduler.Core.Localization;
+using Scheduler.Core.Models;
 
 namespace Scheduler.Forms.Controls
 {
@@ -11,6 +11,8 @@ namespace Scheduler.Forms.Controls
         private int _year;
         private int _month;
         private int _day;
+        private BindingList<Appointment> _appointments;
+        private Form dynamicForm;
 
         public DayControl()
         {
@@ -18,30 +20,30 @@ namespace Scheduler.Forms.Controls
             _year = DateTime.Now.Year;
             _month = DateTime.Now.Month;
             _day = DateTime.Now.Day;
+            _appointments = new BindingList<Appointment>();
         }
 
-        public DayControl(int year, int month, int day, bool allowAddEvent = true)
+        public DayControl(int year, int month, int day, BindingList<Appointment> appointments,  bool allowAddEvent = true)
         {
             InitializeComponent();
-            try
-            {
-                Font awesomeFont = FontService.LoadFontAwesome();
-                btnAddEvent.Font = awesomeFont;
-                btnAddEvent.Text = char.ConvertFromUtf32((int)IconType.PlusCircle);
-            }
-            catch (Exception)
-            {
-                btnAddEvent.Font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Regular);
-                btnAddEvent.Text = " + ";
-            }
 
             _year = year;
             _month = month;
             _day = day;
+            lblAppointments.Visible = false;
+            lblCount.Text = string.Empty;
+
             if (allowAddEvent)
             {
                 btnAddEvent.Visible = true;
+                if (appointments.Count > 0)
+                {
+                    lblCount.Text = appointments.Count.ToString();
+                    lblAppointments.Visible = true;
+                }
             }
+
+            _appointments = appointments;
         }
 
         public void SetDayLabel(int day)
@@ -51,7 +53,12 @@ namespace Scheduler.Forms.Controls
 
         private void btnAddEvent_Click(object sender, System.EventArgs e)
         {
-            Appointments appointments = new Appointments(_year, _month, _day);
+            Appointments appointments = new Appointments(_year, _month, _day, _appointments);
+            appointments.FormClosed += Appointments_FormClosed;
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = false;
+            }
             appointments.Show();
         }
 
@@ -63,6 +70,56 @@ namespace Scheduler.Forms.Controls
         private void btnAddEvent_MouseLeave(object sender, System.EventArgs e)
         {
             btnAddEvent.Cursor = Cursors.Default;
+        }
+
+        private void Appointments_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+        }
+
+        private void DayControl_DoubleClick(object sender, EventArgs e)
+        {
+            OpenDynamicForm();
+        }
+
+        private void OnDynamicClose(object sender, System.EventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+            dynamicForm?.Close();
+        }
+
+        private void OnDynamicDelete(object sender, System.EventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+            dynamicForm?.Close();
+        }
+
+        private void OpenDynamicForm()
+        {
+            dynamicForm = new Form();
+            AppointmentsControl appointmentsControl = new AppointmentsControl(_appointments);
+            appointmentsControl.CancelClicked += OnDynamicClose;
+            appointmentsControl.DeleteClicked += OnDynamicDelete;
+            dynamicForm.Controls.Add(appointmentsControl);
+            dynamicForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            dynamicForm.AutoSize = true;
+            dynamicForm.Text = Resources.AppointmentAdministration;
+            dynamicForm.StartPosition = FormStartPosition.CenterScreen;
+            dynamicForm.ControlBox = false;
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = false;
+            }
+            dynamicForm.ShowDialog();
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
+using Scheduler.Core.Models;
 
 namespace Scheduler.Forms.Controls
 {
@@ -34,6 +35,7 @@ namespace Scheduler.Forms.Controls
         private Button btn1415;
         private Button btn1213;
         private Button btn1314;
+        public List<AppointmentTime> AppointmentTimes = new List<AppointmentTime>();
 
         public int Year { get; set; }
         public int Month { get; set; }
@@ -74,7 +76,20 @@ namespace Scheduler.Forms.Controls
 
             if (result == DialogResult.Yes)
             {
+                var ItemToRemove = AppointmentTimes.FirstOrDefault(x =>
+                    x.StartTime == resizableAppointment.StartTime && x.EndTime == resizableAppointment.EndTime);
+                if (ItemToRemove != null)
+                {
+                    AppointmentTimes.Remove(ItemToRemove);
+                }
                 flpAppointments.Controls.Remove(resizableAppointment);
+                int timeSlot = Convert.ToInt32(resizableAppointment.StartTime.ToString() + resizableAppointment.EndTime.ToString());
+                var item = _takenSlots.FirstOrDefault(x => x.Key == timeSlot);
+                Button buttonToDisable = FindControlByName<Button>(item.Value);
+                buttonToDisable.Enabled = true;
+                buttonToDisable.BackColor = SystemColors.Control;
+                _takenSlots.Remove(timeSlot);
+                _availableSlots.Add(item.Key, item.Value);
                 ResetTimeSlot();
                 CalculateAvailableTimeSlots();
             }
@@ -89,41 +104,49 @@ namespace Scheduler.Forms.Controls
         private void btn910_Click(object sender, System.EventArgs e)
         {
             SetTimeSlot(9, 10);
+            AppointmentTimes.Add(new AppointmentTime{StartTime = 9, EndTime = 10});
         }
 
         private void btn1011_Click(object sender, System.EventArgs e)
         {
             SetTimeSlot(10, 11);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 10, EndTime = 11 });
         }
 
         private void btn1112_Click(object sender, EventArgs e)
         {
             SetTimeSlot(11, 12);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 11, EndTime = 12 });
         }
 
         private void btn1213_Click(object sender, EventArgs e)
         {
             SetTimeSlot(12, 13);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 12, EndTime = 13 });
         }
 
         private void btn1314_Click(object sender, EventArgs e)
         {
             SetTimeSlot(13, 14);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 13, EndTime = 14 });
         }
 
         private void btn1415_Click(object sender, EventArgs e)
         {
             SetTimeSlot(14, 15);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 14, EndTime = 15 });
         }
 
         private void btn1516_Click(object sender, EventArgs e)
         {
             SetTimeSlot(15, 16);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 15, EndTime = 16 });
         }
 
         private void btn1617_Click(object sender, EventArgs e)
         {
             SetTimeSlot(16, 17);
+            AppointmentTimes.Add(new AppointmentTime { StartTime = 16, EndTime = 17 });
         }
 
         #endregion
@@ -148,96 +171,97 @@ namespace Scheduler.Forms.Controls
             this.flpAppointments.BackColor = System.Drawing.SystemColors.ControlDark;
             this.flpAppointments.Location = new System.Drawing.Point(86, 3);
             this.flpAppointments.Name = "flpAppointments";
-            this.flpAppointments.Size = new System.Drawing.Size(303, 371);
+            this.flpAppointments.Size = new System.Drawing.Size(203, 240);
             this.flpAppointments.TabIndex = 11;
             // 
             // btn910
             // 
-            this.btn910.Location = new System.Drawing.Point(5, 6);
+            this.btn910.Location = new System.Drawing.Point(5, 3);
             this.btn910.Margin = new System.Windows.Forms.Padding(0);
             this.btn910.Name = "btn910";
-            this.btn910.Size = new System.Drawing.Size(75, 45);
+            this.btn910.Size = new System.Drawing.Size(75, 30);
             this.btn910.TabIndex = 12;
             this.btn910.Text = "9 -10";
             this.btn910.UseVisualStyleBackColor = true;
-            this.btn910.Click += btn910_Click;
+            this.btn910.Click += new System.EventHandler(this.btn910_Click);
             // 
             // btn1617
             // 
-            this.btn1617.Location = new System.Drawing.Point(5, 321);
+            this.btn1617.BackColor = System.Drawing.SystemColors.Control;
+            this.btn1617.Location = new System.Drawing.Point(5, 213);
             this.btn1617.Margin = new System.Windows.Forms.Padding(0);
             this.btn1617.Name = "btn1617";
-            this.btn1617.Size = new System.Drawing.Size(75, 45);
+            this.btn1617.Size = new System.Drawing.Size(75, 30);
             this.btn1617.TabIndex = 19;
             this.btn1617.Text = "16 - 17";
-            this.btn1617.UseVisualStyleBackColor = true;
-            this.btn1617.Click += btn1617_Click;
+            this.btn1617.UseVisualStyleBackColor = false;
+            this.btn1617.Click += new System.EventHandler(this.btn1617_Click);
             // 
             // btn1011
             // 
-            this.btn1011.Location = new System.Drawing.Point(5, 51);
+            this.btn1011.Location = new System.Drawing.Point(5, 33);
             this.btn1011.Margin = new System.Windows.Forms.Padding(0);
             this.btn1011.Name = "btn1011";
-            this.btn1011.Size = new System.Drawing.Size(75, 45);
+            this.btn1011.Size = new System.Drawing.Size(75, 30);
             this.btn1011.TabIndex = 13;
             this.btn1011.Text = "10 - 11";
             this.btn1011.UseVisualStyleBackColor = true;
-            this.btn1011.Click += btn1011_Click;
+            this.btn1011.Click += new System.EventHandler(this.btn1011_Click);
             // 
             // btn1516
             // 
-            this.btn1516.Location = new System.Drawing.Point(5, 276);
+            this.btn1516.Location = new System.Drawing.Point(5, 183);
             this.btn1516.Margin = new System.Windows.Forms.Padding(0);
             this.btn1516.Name = "btn1516";
-            this.btn1516.Size = new System.Drawing.Size(75, 45);
+            this.btn1516.Size = new System.Drawing.Size(75, 30);
             this.btn1516.TabIndex = 18;
             this.btn1516.Text = "15 - 16";
             this.btn1516.UseVisualStyleBackColor = true;
-            this.btn1516.Click += btn1516_Click;
+            this.btn1516.Click += new System.EventHandler(this.btn1516_Click);
             // 
             // btn1112
             // 
-            this.btn1112.Location = new System.Drawing.Point(5, 96);
+            this.btn1112.Location = new System.Drawing.Point(5, 63);
             this.btn1112.Margin = new System.Windows.Forms.Padding(0);
             this.btn1112.Name = "btn1112";
-            this.btn1112.Size = new System.Drawing.Size(75, 45);
+            this.btn1112.Size = new System.Drawing.Size(75, 30);
             this.btn1112.TabIndex = 14;
             this.btn1112.Text = "11 - 12";
             this.btn1112.UseVisualStyleBackColor = true;
-            this.btn1112.Click += btn1112_Click;
+            this.btn1112.Click += new System.EventHandler(this.btn1112_Click);
             // 
             // btn1415
             // 
-            this.btn1415.Location = new System.Drawing.Point(5, 231);
+            this.btn1415.Location = new System.Drawing.Point(5, 153);
             this.btn1415.Margin = new System.Windows.Forms.Padding(0);
             this.btn1415.Name = "btn1415";
-            this.btn1415.Size = new System.Drawing.Size(75, 45);
+            this.btn1415.Size = new System.Drawing.Size(75, 30);
             this.btn1415.TabIndex = 17;
             this.btn1415.Text = "14 - 15";
             this.btn1415.UseVisualStyleBackColor = true;
-            this.btn1415.Click += btn1415_Click;
+            this.btn1415.Click += new System.EventHandler(this.btn1415_Click);
             // 
             // btn1213
             // 
-            this.btn1213.Location = new System.Drawing.Point(5, 141);
+            this.btn1213.Location = new System.Drawing.Point(5, 93);
             this.btn1213.Margin = new System.Windows.Forms.Padding(0);
             this.btn1213.Name = "btn1213";
-            this.btn1213.Size = new System.Drawing.Size(75, 45);
+            this.btn1213.Size = new System.Drawing.Size(75, 30);
             this.btn1213.TabIndex = 15;
             this.btn1213.Text = "12 - 13";
             this.btn1213.UseVisualStyleBackColor = true;
-            this.btn1213.Click += btn1213_Click;
+            this.btn1213.Click += new System.EventHandler(this.btn1213_Click);
             // 
             // btn1314
             // 
-            this.btn1314.Location = new System.Drawing.Point(5, 186);
+            this.btn1314.Location = new System.Drawing.Point(5, 123);
             this.btn1314.Margin = new System.Windows.Forms.Padding(0);
             this.btn1314.Name = "btn1314";
-            this.btn1314.Size = new System.Drawing.Size(75, 45);
+            this.btn1314.Size = new System.Drawing.Size(75, 30);
             this.btn1314.TabIndex = 16;
             this.btn1314.Text = "13 - 14";
             this.btn1314.UseVisualStyleBackColor = true;
-            this.btn1314.Click += btn1314_Click;
+            this.btn1314.Click += new System.EventHandler(this.btn1314_Click);
             // 
             // TimeSlotsControl
             // 
@@ -252,8 +276,9 @@ namespace Scheduler.Forms.Controls
             this.Controls.Add(this.btn1213);
             this.Controls.Add(this.btn1314);
             this.Name = "TimeSlotsControl";
-            this.Size = new System.Drawing.Size(395, 377);
+            this.Size = new System.Drawing.Size(292, 246);
             this.ResumeLayout(false);
+
         }
 
         private void CalculateAvailableTimeSlots()
@@ -295,6 +320,7 @@ namespace Scheduler.Forms.Controls
                 {
                     Button buttonToDisable = FindControlByName<Button>(item.Value);
                     buttonToDisable.Enabled = false;
+                    buttonToDisable.BackColor = SystemColors.ControlDarkDark;
                     _takenSlots.Add(item.Key, item.Value);
                 }
 
@@ -318,7 +344,7 @@ namespace Scheduler.Forms.Controls
                     {
                         case 910:
                             startTime = 9;
-                            endTime = 9;
+                            endTime = 10;
                             break;
                         case 1011:
                             startTime = 10;
@@ -382,11 +408,12 @@ namespace Scheduler.Forms.Controls
                     _availableSlots.Add(keyValuePair.Key, keyValuePair.Value);
                     Button buttonToDisable = FindControlByName<Button>(keyValuePair.Value);
                     buttonToDisable.Enabled = true;
+                    buttonToDisable.BackColor = SystemColors.Control;
                 }
             }
         }
 
-        private void SetTimeSlot(int startTime, int endTime)
+        public void SetTimeSlot(int startTime, int endTime, bool allowDelete = true)
         {
             CalculateAvailableTimeSlots();
 
@@ -400,6 +427,11 @@ namespace Scheduler.Forms.Controls
                 appointmentControl.Width = 200;
                 appointmentControl.EndTimeChanged += ResizableAppointment_EndTimeChanged;
                 appointmentControl.BackColor = Color.White;
+
+                if (!allowDelete)
+                {
+                    appointmentControl.HideDeleteButton();
+                }
 
                 flpAppointments.Controls.Add(appointmentControl);
                 _startTime = _endTime;

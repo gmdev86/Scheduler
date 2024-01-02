@@ -513,11 +513,155 @@ namespace Scheduler.Core.Services
 
         #endregion
 
+        #region Appointment
+
+        public void CreateAppointment(Appointment appointment)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO appointment (customerId, userId, title, description, location, contact, " +
+                               "type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                               "VALUES (@CustomerId, @UserId, @Title, @Description, @Location, @Contact, " +
+                               "@Type, @Url, @Start, @End, @CreateDate, @CreatedBy, @LastUpdate, @LastUpdateBy)";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CustomerId", appointment.CustomerId);
+                    command.Parameters.AddWithValue("@UserId", appointment.UserId);
+                    command.Parameters.AddWithValue("@Title", appointment.Title);
+                    command.Parameters.AddWithValue("@Description", appointment.Description);
+                    command.Parameters.AddWithValue("@Location", appointment.Location);
+                    command.Parameters.AddWithValue("@Contact", appointment.Contact);
+                    command.Parameters.AddWithValue("@Type", appointment.Type);
+                    command.Parameters.AddWithValue("@Url", appointment.Url);
+                    command.Parameters.AddWithValue("@Start", appointment.Start);
+                    command.Parameters.AddWithValue("@End", appointment.End);
+                    command.Parameters.AddWithValue("@CreateDate", appointment.CreateDate);
+                    command.Parameters.AddWithValue("@CreatedBy", appointment.CreatedBy);
+                    command.Parameters.AddWithValue("@LastUpdate", appointment.LastUpdate);
+                    command.Parameters.AddWithValue("@LastUpdateBy", appointment.LastUpdateBy);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public BindingList<Appointment> GetAllAppointments(DateTime? createDateTime = null)
+        {
+            BindingList<Appointment> appointments = new BindingList<Appointment>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * " +
+                               "FROM appointment " +
+                               "WHERE @createDate is null || " +
+                               "createDate = @createDate";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@createDate", createDateTime);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Appointment appointment = new Appointment
+                            {
+                                AppointmentId = reader.GetInt32("appointmentId"),
+                                CustomerId = reader.GetInt32("customerId"),
+                                UserId = reader.GetInt32("userId"),
+                                Title = reader.GetString("title"),
+                                Description = reader.GetString("description"),
+                                Location = reader.GetString("location"),
+                                Contact = reader.GetString("contact"),
+                                Type = reader.GetString("type"),
+                                Url = reader.GetString("url"),
+                                Start = reader.GetDateTime("start"),
+                                End = reader.GetDateTime("end"),
+                                CreateDate = reader.GetDateTime("createDate"),
+                                CreatedBy = reader.GetString("createdBy"),
+                                LastUpdate = reader.GetDateTime("lastUpdate"),
+                                LastUpdateBy = reader.GetString("lastUpdateBy")
+                            };
+
+                            appointments.Add(appointment);
+                        }
+                    }
+                }
+            }
+
+            return appointments;
+        }
+
+        public void UpdateAppointment(Appointment updatedAppointment)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "UPDATE appointment SET customerId = @CustomerId, userId = @UserId, " +
+                               "title = @Title, description = @Description, location = @Location, " +
+                               "contact = @Contact, type = @Type, url = @Url, start = @Start, " +
+                               "end = @End, createDate = @CreateDate, createdBy = @CreatedBy, " +
+                               "lastUpdate = @LastUpdate, lastUpdateBy = @LastUpdateBy " +
+                               "WHERE appointmentId = @AppointmentId";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CustomerId", updatedAppointment.CustomerId);
+                    command.Parameters.AddWithValue("@UserId", updatedAppointment.UserId);
+                    command.Parameters.AddWithValue("@Title", updatedAppointment.Title);
+                    command.Parameters.AddWithValue("@Description", updatedAppointment.Description);
+                    command.Parameters.AddWithValue("@Location", updatedAppointment.Location);
+                    command.Parameters.AddWithValue("@Contact", updatedAppointment.Contact);
+                    command.Parameters.AddWithValue("@Type", updatedAppointment.Type);
+                    command.Parameters.AddWithValue("@Url", updatedAppointment.Url);
+                    command.Parameters.AddWithValue("@Start", updatedAppointment.Start);
+                    command.Parameters.AddWithValue("@End", updatedAppointment.End);
+                    command.Parameters.AddWithValue("@CreateDate", updatedAppointment.CreateDate);
+                    command.Parameters.AddWithValue("@CreatedBy", updatedAppointment.CreatedBy);
+                    command.Parameters.AddWithValue("@LastUpdate", updatedAppointment.LastUpdate);
+                    command.Parameters.AddWithValue("@LastUpdateBy", updatedAppointment.LastUpdateBy);
+                    command.Parameters.AddWithValue("@AppointmentId", updatedAppointment.AppointmentId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteAppointment(int appointmentId)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM appointment WHERE appointmentId = @AppointmentId";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AppointmentId", appointmentId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        #endregion
+
         #region Load ComboBoxItems
 
-        public BindingList<SelectListItem> LoadItems(string tableName)
+        public BindingList<SelectListItem> LoadItems(string tableName, bool includeNamePostfix = false)
         {
             BindingList<SelectListItem> selectListItems = new BindingList<SelectListItem>();
+            string valueText = tableName;
+            if (includeNamePostfix)
+            {
+                valueText = valueText + "Name";
+            }
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -534,7 +678,7 @@ namespace Scheduler.Core.Services
                             SelectListItem selectListItem = new SelectListItem
                             {
                                 Id = reader.GetInt32($"{tableName}Id"),
-                                Value = reader.GetString($"{tableName}")
+                                Value = reader.GetString($"{valueText}")
                             };
 
                             selectListItems.Add(selectListItem);

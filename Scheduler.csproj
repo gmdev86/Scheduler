@@ -101,13 +101,24 @@
   <ItemGroup>
     <Compile Include="Core\Enums\IconType.cs" />
     <Compile Include="Core\Enums\Tabs.cs" />
+    <Compile Include="Core\Localization\Resources.es-ES.Designer.cs">
+      <DependentUpon>Resources.es-ES.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Core\Localization\Resources.fr-FR.Designer.cs">
+      <DependentUpon>Resources.fr-FR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Core\Localization\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Models\AppointmentTime.cs" />
     <Compile Include="Core\Models\SelectListItem.cs" />
-    <Compile Include="Core\Services\FontService.cs" />
+    <Compile Include="Core\Services\UserSession.cs" />
     <Compile Include="Core\Utility\DateTimeConverter.cs" />
     <Compile Include="Core\Utility\Dialog.cs" />
     <Compile Include="Forms\Appointments.cs">
@@ -127,6 +138,12 @@
     </Compile>
     <Compile Include="Forms\Controls\AddressModifyControl.Designer.cs">
       <DependentUpon>AddressModifyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\AppointmentsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\AppointmentsControl.Designer.cs">
+      <DependentUpon>AppointmentsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\BlankDayControl.cs">
       <SubType>UserControl</SubType>
@@ -211,6 +228,12 @@
     <Compile Include="Forms\CustomerAdministration.Designer.cs">
       <DependentUpon>CustomerAdministration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Language.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Language.Designer.cs">
+      <DependentUpon>Language.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +254,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Core\Images\square_plus.png" />
+    <Content Include="Core\Images\square_plus30x30.png" />
+    <Content Include="Core\Images\square_plus_green30x30.png" />
+    <Content Include="Core\Images\trash_red_26x30.png" />
+    <EmbeddedResource Include="Core\Localization\Resources.es-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.es-ES.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Localization\Resources.fr-FR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.fr-FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Localization\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -243,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\AddressModifyControl.resx">
       <DependentUpon>AddressModifyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\AppointmentsControl.resx">
+      <DependentUpon>AppointmentsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\BlankDayControl.resx">
       <DependentUpon>BlankDayControl.cs</DependentUpon>
@@ -280,6 +318,9 @@
     <EmbeddedResource Include="Forms\CustomerAdministration.resx">
       <DependentUpon>CustomerAdministration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Language.resx">
+      <DependentUpon>Language.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -299,9 +340,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Content Include="Core\Font\fontawesome-webfont.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

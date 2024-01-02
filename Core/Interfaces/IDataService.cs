@@ -1,4 +1,5 @@
 ﻿using Scheduler.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,10 @@ namespace Scheduler.Core.Interfaces
         DataTable GetAllAddresses();
         void UpdateAddress(Address updatedAddress);
         void DeleteAddress(int addressId);
-        BindingList<SelectListItem> LoadItems(string tableName);
+        void CreateAppointment(Appointment appointment);
+        BindingList<Appointment> GetAllAppointments(DateTime? createDateTime = null);
+        void UpdateAppointment(Appointment updatedAppointment);
+        void DeleteAppointment(int appointmentId);
+        BindingList<SelectListItem> LoadItems(string tableName, bool includeNamePostfix = false);
     }
 }

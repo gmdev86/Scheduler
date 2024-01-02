@@ -1,6 +1,12 @@
 ﻿using System.Globalization;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using Scheduler.Core.Interfaces;
+using Scheduler.Core.Models;
+using Scheduler.Core.Services;
+using System.ComponentModel;
 
 namespace Scheduler.Forms.Controls
 {
@@ -63,10 +69,13 @@ namespace Scheduler.Forms.Controls
         private DayControl dayControl35;
         private DayControl dayControl36;
         private int _day;
+        private IDataService _dataService;
+        private BindingList<Appointment> _appointments;
 
         public CalendarControl()
         {
             InitializeComponent();
+            _dataService = new DataService();
             Load += Calendar_Load;
         }
 
@@ -707,6 +716,7 @@ namespace Scheduler.Forms.Controls
 
         private void Calendar_Load(object sender, EventArgs e)
         {
+            _appointments = _dataService.GetAllAppointments();
             DisplayDays();
         }
 
@@ -730,7 +740,10 @@ namespace Scheduler.Forms.Controls
 
             for (int i = 1; i <= days; i++)
             {
-                DayControl dayControl = new DayControl(_year, _month, i, AllowAddEvent(i));
+                DateTime currentDay = new DateTime(_year, _month, i);
+                var appointmentsForDay = _appointments.Where(x => x.CreateDate.Date == currentDay.Date).ToList();
+                BindingList<Appointment> appointmentForDay = new BindingList<Appointment>(appointmentsForDay);
+                DayControl dayControl = new DayControl(_year, _month, i, appointmentForDay, AllowAddEvent(i));
                 dayControl.SetDayLabel(i);
 
                 if (i == _day && _year == DateTime.Now.Year && _month == DateTime.Now.Month)

@@ -1,8 +1,8 @@
 ﻿using Scheduler.Core.Enums;
-using Scheduler.Core.Services;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Scheduler.Core.Localization;
 
 namespace Scheduler.Forms.Controls
 {
@@ -17,10 +17,12 @@ namespace Scheduler.Forms.Controls
         private const string ControlName = "ResizableAppointment";
         private Point previousMouseLocation;
         private bool isResizing;
-        private int _startTime; 
         private int _endTime;
         private Button btnDelete;
         private Action<ResizableAppointment> deleteAppointment;
+        private bool allowResize = false;
+
+        public int StartTime { get; set; } 
 
         public int EndTime
         {
@@ -37,7 +39,7 @@ namespace Scheduler.Forms.Controls
         
         public ResizableAppointment()
         {
-            this._startTime = 9;
+            this.StartTime = 9;
             this._endTime = 10;
             this._maxAppointmentHeight = 8 * 30;
             this.Margin = Padding.Empty;
@@ -49,7 +51,7 @@ namespace Scheduler.Forms.Controls
 
         public ResizableAppointment(int startTime, int endTime, int max = 8, Action<ResizableAppointment> deleteAppointment = null)
         {
-            this._startTime = startTime;
+            this.StartTime = startTime;
             this._endTime = endTime;
             this._maxAppointmentHeight = max * 30;
             this.Margin = Padding.Empty;
@@ -65,9 +67,12 @@ namespace Scheduler.Forms.Controls
             Height = CalculateHeight();
             Cursor = Cursors.SizeNS;
 
-            MouseDown += ResizableAppointment_MouseDown;
-            MouseMove += ResizableAppointment_MouseMove;
-            MouseUp += ResizableAppointment_MouseUp;
+            if (allowResize)
+            {
+                MouseDown += ResizableAppointment_MouseDown;
+                MouseMove += ResizableAppointment_MouseMove;
+                MouseUp += ResizableAppointment_MouseUp;
+            }
 
             this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -76,7 +81,12 @@ namespace Scheduler.Forms.Controls
             // 
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.Font = FontService.LoadFontAwesome();
+
+            Image originalImage = Resources.trash_red_26x30;
+            int desiredWidth = 20;
+            int desiredHeight = 25;
+            Image resizedImage = new Bitmap(originalImage, new Size(desiredWidth, desiredHeight));
+            this.btnDelete.Image = resizedImage;
             this.btnDelete.Location = new System.Drawing.Point(170, 0);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
@@ -85,7 +95,7 @@ namespace Scheduler.Forms.Controls
             this.btnDelete.Text = char.ConvertFromUtf32((int)IconType.TrashO);
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            this.btnDelete.ForeColor = Color.Red;
+            this.btnDelete.ForeColor = Color.White;
             this.btnDelete.MouseEnter += btnDelete_MouseEnter;
             this.btnDelete.MouseLeave += btnDelete_MouseLeave;
             this.Controls.Add(this.btnDelete);
@@ -94,7 +104,7 @@ namespace Scheduler.Forms.Controls
 
         public int CurrentStartTime()
         {
-            return this._startTime;
+            return this.StartTime;
         }
 
         public int CurrentEndTime()
@@ -104,12 +114,12 @@ namespace Scheduler.Forms.Controls
 
         private int CalculateHeight()
         {
-            return Math.Max(MinAppointmentHeight, Math.Min(_maxAppointmentHeight, (EndTime - _startTime) * TimeSlotHeight));
+            return Math.Max(MinAppointmentHeight, Math.Min(_maxAppointmentHeight, (EndTime - StartTime) * TimeSlotHeight));
         }
 
         private int CalculateTimeFromPosition(int position)
         {
-            return _startTime + position / TimeSlotHeight;
+            return StartTime + position / TimeSlotHeight;
         }
 
         private void ResizableAppointment_MouseDown(object sender, MouseEventArgs e)
@@ -131,7 +141,7 @@ namespace Scheduler.Forms.Controls
                 int newHeight = e.Y / TimeSlotHeight * TimeSlotHeight;
                 Height = Math.Max(MinAppointmentHeight, Math.Min(_maxAppointmentHeight, newHeight));
                 var tempEndTime = CalculateTimeFromPosition(e.Y);
-                EndTime = Math.Max(_startTime + 1, Math.Min(_startTime + _maxAppointmentHeight / TimeSlotHeight, tempEndTime));
+                EndTime = Math.Max(StartTime + 1, Math.Min(StartTime + _maxAppointmentHeight / TimeSlotHeight, tempEndTime));
 
                 if (EndTime > 17)
                 {
@@ -164,7 +174,7 @@ namespace Scheduler.Forms.Controls
 
             using (Font font = new Font("Arial", 10))
             {
-                TextRenderer.DrawText(e.Graphics, $"{_startTime}:00 - {EndTime}:00", font, new Point(5, 5), ForeColor);
+                TextRenderer.DrawText(e.Graphics, $"{StartTime}:00 - {EndTime}:00", font, new Point(5, 5), ForeColor);
             }
         }
 
@@ -189,6 +199,10 @@ namespace Scheduler.Forms.Controls
             btnDelete.Cursor = Cursors.Default;
         }
 
+        public void HideDeleteButton()
+        {
+            btnDelete.Visible = false;
+        }
     }
 
 }
