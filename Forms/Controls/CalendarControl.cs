@@ -720,6 +720,12 @@ namespace Scheduler.Forms.Controls
             DisplayDays();
         }
 
+        private void ReloadData()
+        {
+            _appointments = _dataService.GetAllAppointments();
+            DisplayDays();
+        }
+
         private void SetupDayContainer()
         {
             flpDayContainer.Controls.Clear();
@@ -741,10 +747,12 @@ namespace Scheduler.Forms.Controls
             for (int i = 1; i <= days; i++)
             {
                 DateTime currentDay = new DateTime(_year, _month, i);
-                var appointmentsForDay = _appointments.Where(x => x.CreateDate.Date == currentDay.Date).ToList();
+                var appointmentsForDay = _appointments.Where(x => x.Start.Date == currentDay.Date).ToList();
                 BindingList<Appointment> appointmentForDay = new BindingList<Appointment>(appointmentsForDay);
                 DayControl dayControl = new DayControl(_year, _month, i, appointmentForDay, AllowAddEvent(i));
                 dayControl.SetDayLabel(i);
+                dayControl.AppointmentDeleted += Appointment_Deleted;
+                dayControl.AppointmentSaved += Appointment_Saved;
 
                 if (i == _day && _year == DateTime.Now.Year && _month == DateTime.Now.Month)
                 {
@@ -814,6 +822,18 @@ namespace Scheduler.Forms.Controls
             }
 
             SetupDayContainer();
+        }
+
+        private void Appointment_Deleted(object sender, EventArgs e)
+        {
+            ReloadData();
+            this.Enabled = true;
+        }
+
+        private void Appointment_Saved(object sender, EventArgs e)
+        {
+            ReloadData();
+            this.Enabled = true;
         }
     }
 }

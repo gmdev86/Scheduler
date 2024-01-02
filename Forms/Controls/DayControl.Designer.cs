@@ -29,11 +29,13 @@ namespace Scheduler.Forms.Controls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DayControl));
             this.lblDay = new System.Windows.Forms.Label();
             this.btnAddEvent = new System.Windows.Forms.Button();
             this.lblCount = new System.Windows.Forms.Label();
             this.lblAppointments = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // lblDay
@@ -109,5 +111,6 @@ namespace Scheduler.Forms.Controls
         private System.Windows.Forms.Button btnAddEvent;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lblAppointments;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -160,6 +160,15 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointment not selected.
+        /// </summary>
+        public static string AppointmentNotSelected {
+            get {
+                return ResourceManager.GetString("AppointmentNotSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointment/s successfully added!.
         /// </summary>
         public static string AppointmentsAddedSuccess {
@@ -597,6 +606,15 @@ namespace Scheduler.Core.Localization {
         public static string SelectAddress {
             get {
                 return ResourceManager.GetString("SelectAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select Appointment.
+        /// </summary>
+        public static string SelectAppointment {
+            get {
+                return ResourceManager.GetString("SelectAppointment", resourceCulture);
             }
         }
         

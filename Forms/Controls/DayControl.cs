@@ -13,6 +13,8 @@ namespace Scheduler.Forms.Controls
         private int _day;
         private BindingList<Appointment> _appointments;
         private Form dynamicForm;
+        public event EventHandler AppointmentDeleted;
+        public event EventHandler AppointmentSaved;
 
         public DayControl()
         {
@@ -21,12 +23,13 @@ namespace Scheduler.Forms.Controls
             _month = DateTime.Now.Month;
             _day = DateTime.Now.Day;
             _appointments = new BindingList<Appointment>();
+            toolTip1.Active = false;
         }
 
         public DayControl(int year, int month, int day, BindingList<Appointment> appointments,  bool allowAddEvent = true)
         {
             InitializeComponent();
-
+            toolTip1.Active = false;
             _year = year;
             _month = month;
             _day = day;
@@ -41,6 +44,9 @@ namespace Scheduler.Forms.Controls
                     lblCount.Text = appointments.Count.ToString();
                     lblAppointments.Visible = true;
                 }
+
+                toolTip1.Active = true;
+                toolTip1.SetToolTip(this, "Double Click to Edit");
             }
 
             _appointments = appointments;
@@ -55,6 +61,7 @@ namespace Scheduler.Forms.Controls
         {
             Appointments appointments = new Appointments(_year, _month, _day, _appointments);
             appointments.FormClosed += Appointments_FormClosed;
+            appointments.AppointmentsSaved += Appointments_Saved;
             if (this.ParentForm != null)
             {
                 this.ParentForm.Enabled = false;
@@ -80,6 +87,15 @@ namespace Scheduler.Forms.Controls
             }
         }
 
+        private void Appointments_Saved(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+            AppointmentSaved?.Invoke(this, EventArgs.Empty);
+        }
+
         private void DayControl_DoubleClick(object sender, EventArgs e)
         {
             OpenDynamicForm();
@@ -101,6 +117,7 @@ namespace Scheduler.Forms.Controls
                 this.ParentForm.Enabled = true;
             }
             dynamicForm?.Close();
+            AppointmentDeleted?.Invoke(this, EventArgs.Empty);
         }
 
         private void OpenDynamicForm()

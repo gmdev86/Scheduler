@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 using Scheduler.Core.Services;
-using System.Collections.Generic;
 using System.Text;
 using Scheduler.Core.Localization;
 
@@ -20,6 +19,7 @@ namespace Scheduler.Forms
         private BindingList<SelectListItem> _customerListItems;
         private IDataService _dataService;
         private BindingList<Appointment> _appointments;
+        public event EventHandler AppointmentsSaved;
 
         public Appointments()
         {
@@ -89,10 +89,13 @@ namespace Scheduler.Forms
                             customerId = (cbCustomer.Items[selectedIndex] as SelectListItem).Id;
                         }
 
+                        DateTime startTime = new DateTime(Year, Month, Day);
+                        DateTime endTime = new DateTime(Year, Month, Day);
+
                         foreach (AppointmentTime appointmentTime in appointmentTimes)
                         {
-                            DateTime startTime = DateTime.Now.Date.Add(new TimeSpan(appointmentTime.StartTime, 0, 0));
-                            DateTime endTime = DateTime.Now.Date.Add(new TimeSpan(appointmentTime.EndTime, 0, 0));
+                            startTime = startTime.Add(new TimeSpan(appointmentTime.StartTime, 0, 0));
+                            endTime = endTime.Add(new TimeSpan(appointmentTime.EndTime, 0, 0));
                             Appointment appointment = new Appointment
                             {
                                 UserId = userId ?? 0,
@@ -113,6 +116,7 @@ namespace Scheduler.Forms
                             _dataService.CreateAppointment(appointment);
                         }
                         MessageBox.Show(Resources.AppointmentsAddedSuccess);
+                        AppointmentsSaved?.Invoke(this, EventArgs.Empty);
                         this.Close();
                     }
                     catch (Exception ex)

@@ -30,13 +30,13 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.bnCancel = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvAppointments = new System.Windows.Forms.DataGridView();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
@@ -68,7 +68,7 @@
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlFooter.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlFooter.Controls.Add(this.bnCancel);
+            this.pnlFooter.Controls.Add(this.btnCancel);
             this.pnlFooter.Controls.Add(this.btnDelete);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 475);
@@ -77,16 +77,16 @@
             this.pnlFooter.Size = new System.Drawing.Size(1046, 60);
             this.pnlFooter.TabIndex = 0;
             // 
-            // bnCancel
+            // btnCancel
             // 
-            this.bnCancel.Location = new System.Drawing.Point(941, 12);
-            this.bnCancel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.bnCancel.Name = "bnCancel";
-            this.bnCancel.Size = new System.Drawing.Size(75, 38);
-            this.bnCancel.TabIndex = 1;
-            this.bnCancel.Text = "Cancel";
-            this.bnCancel.UseVisualStyleBackColor = true;
-            this.bnCancel.Click += new System.EventHandler(this.bnCancel_Click);
+            this.btnCancel.Location = new System.Drawing.Point(941, 12);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 38);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
@@ -127,15 +127,12 @@
             this.pnlHeader.Size = new System.Drawing.Size(1046, 48);
             this.pnlHeader.TabIndex = 2;
             // 
-            // lblTitle
+            // txtSearch
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(20, 10);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(143, 25);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Appointments";
+            this.txtSearch.Location = new System.Drawing.Point(698, 17);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(289, 20);
+            this.txtSearch.TabIndex = 2;
             // 
             // btnSearch
             // 
@@ -148,12 +145,15 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // txtSearch
+            // lblTitle
             // 
-            this.txtSearch.Location = new System.Drawing.Point(698, 17);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(289, 20);
-            this.txtSearch.TabIndex = 2;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(20, 10);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(143, 25);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Appointments";
             // 
             // AppointmentsControl
             // 
@@ -178,7 +178,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel pnlFooter;
-        private System.Windows.Forms.Button bnCancel;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvAppointments;
         private System.Windows.Forms.Panel pnlHeader;

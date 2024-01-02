@@ -150,6 +150,9 @@
   <data name="AppointmentAdministration" xml:space="preserve">
     <value>Appointment Administration</value>
   </data>
+  <data name="AppointmentNotSelected" xml:space="preserve">
+    <value>Appointment not selected</value>
+  </data>
   <data name="AppointmentsAddedSuccess" xml:space="preserve">
     <value>Appointment/s successfully added!</value>
   </data>
@@ -296,6 +299,9 @@
   </data>
   <data name="SelectAddress" xml:space="preserve">
     <value>Please select Address.</value>
+  </data>
+  <data name="SelectAppointment" xml:space="preserve">
+    <value>Please select Appointment</value>
   </data>
   <data name="SelectCity" xml:space="preserve">
     <value>Please select City.</value>
