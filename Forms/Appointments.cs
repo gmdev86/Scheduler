@@ -1,11 +1,11 @@
 ﻿using System;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Models;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 using Scheduler.Core.Services;
 using System.Text;
+using Scheduler.Core.Enums;
 using Scheduler.Core.Localization;
 
 namespace Scheduler.Forms
@@ -17,23 +17,26 @@ namespace Scheduler.Forms
         public int Day { get; set; }
         private BindingList<SelectListItem> _userListItems;
         private BindingList<SelectListItem> _customerListItems;
-        private IDataService _dataService;
+        private DataService _dataService;
         private BindingList<Appointment> _appointments;
         public event EventHandler AppointmentsSaved;
+        private UserSession _userSession;
 
         public Appointments()
         {
             InitializeComponent();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             _userListItems = new BindingList<SelectListItem>();
             _customerListItems = new BindingList<SelectListItem>();
             _userListItems = _dataService.LoadItems("user");
             _customerListItems = _dataService.LoadItems("customer");
+            _userSession = UserSession.Instance;
         }
 
         public Appointments(int year, int month, int day, BindingList<Appointment> appointments)
         {
             InitializeComponent();
+            _userSession = UserSession.Instance;
             _appointments = appointments;
             Year = year;
             Month = month;
@@ -89,13 +92,10 @@ namespace Scheduler.Forms
                             customerId = (cbCustomer.Items[selectedIndex] as SelectListItem).Id;
                         }
 
-                        DateTime startTime = new DateTime(Year, Month, Day);
-                        DateTime endTime = new DateTime(Year, Month, Day);
-
                         foreach (AppointmentTime appointmentTime in appointmentTimes)
                         {
-                            startTime = startTime.Add(new TimeSpan(appointmentTime.StartTime, 0, 0));
-                            endTime = endTime.Add(new TimeSpan(appointmentTime.EndTime, 0, 0));
+                            DateTime startTime = new DateTime(Year, Month, Day, appointmentTime.StartTime, 0, 0);
+                            DateTime endTime = new DateTime(Year, Month, Day, appointmentTime.EndTime, 0, 0);
                             Appointment appointment = new Appointment
                             {
                                 UserId = userId ?? 0,
@@ -104,14 +104,14 @@ namespace Scheduler.Forms
                                 Description = txtDescription.Text,
                                 Location = txtLocation.Text,
                                 Title = txtTitle.Text,
-                                Type = txtType.Text,
+                                Type = cbType.SelectedItem as string,
                                 Url = txtUrl.Text,
                                 Start = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(startTime),
                                 End = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(endTime),
                                 CreateDate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now),
-                                CreatedBy = "System", //todo: make sure to update to logged in user
+                                CreatedBy = _userSession.User.UserName,
                                 LastUpdate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now),
-                                LastUpdateBy = "System" //todo: make sure to update to logged in user
+                                LastUpdateBy = _userSession.User.UserName
                             };
                             _dataService.CreateAppointment(appointment);
                         }
@@ -135,6 +135,12 @@ namespace Scheduler.Forms
             cbUser.DisplayMember = "Value";
             cbCustomer.DataSource = _customerListItems;
             cbCustomer.DisplayMember = "Value";
+
+            cbType.Items.Add(string.Empty);
+            foreach (AppointmentType appointmentType in Enum.GetValues(typeof(AppointmentType)))
+            {
+                cbType.Items.Add(appointmentType.ToString());
+            }
         }
 
         private bool IsValid()
@@ -180,7 +186,7 @@ namespace Scheduler.Forms
                 sb.AppendLine(Resources.ContactRequired);
             }
 
-            if (string.IsNullOrWhiteSpace(txtType.Text))
+            if (string.IsNullOrWhiteSpace(cbType.SelectedItem as string))
             {
                 isValid = false;
                 sb.AppendLine(Resources.TypeRequired);

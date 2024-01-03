@@ -1,26 +1,40 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using Scheduler.Core.Interfaces;
+using System.Windows.Forms;
 using Scheduler.Core.Models;
+using Scheduler.Core.Utility;
 
 namespace Scheduler.Core.Services
 {
-    public class DataService : IDataService
+    public class DataService
     {
-        private string connectionString = "Server=localhost;Port=3306;Database=schedule;Uid=test;Pwd=test;";
+        private string _connectionString = "Server=localhost;Port=3306;Database=schedule;Uid=test;Pwd=test;"; //default needed for designer
+        private static DataService _instance;
 
         public DataService()
         {
             try
             {
-                connectionString = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
+                _connectionString = ConfigurationManager.ConnectionStrings["ScheduleConnectionString"].ConnectionString;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show("Missing or invalid connention string in App.config", "Invalid Connectionstring", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static DataService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new DataService();
+                }
+                return _instance;
             }
         }
 
@@ -30,7 +44,7 @@ namespace Scheduler.Core.Services
         {
             DataTable dataTable = new DataTable();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -46,7 +60,7 @@ namespace Scheduler.Core.Services
         
         public void CreateUser(User user)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -59,9 +73,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@Password", user.Password);
                     command.Parameters.AddWithValue("@Active", user.Active);
                     command.Parameters.AddWithValue("@CreateDate", user.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", user.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", user.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", user.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", user.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", user.LastUpdateBy.Truncate(40));
 
                     command.ExecuteNonQuery();
                 }
@@ -72,7 +86,7 @@ namespace Scheduler.Core.Services
         {
             User user = null;
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -106,7 +120,7 @@ namespace Scheduler.Core.Services
         
         public void UpdateUser(User user)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -121,9 +135,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@Password", user.Password);
                     command.Parameters.AddWithValue("@Active", user.Active);
                     command.Parameters.AddWithValue("@CreateDate", user.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", user.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", user.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", user.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", user.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", user.LastUpdateBy.Truncate(40));
                     command.Parameters.AddWithValue("@UserId", user.UserId);
 
                     command.ExecuteNonQuery();
@@ -133,7 +147,7 @@ namespace Scheduler.Core.Services
         
         public void DeleteUser(int userId)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -154,7 +168,7 @@ namespace Scheduler.Core.Services
 
         public void CreateCustomer(Customer customer)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -167,9 +181,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@AddressId", customer.AddressId);
                     command.Parameters.AddWithValue("@IsActive", customer.IsActive);
                     command.Parameters.AddWithValue("@CreateDate", customer.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", customer.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", customer.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", customer.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", customer.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", customer.LastUpdateBy.Truncate(40));
 
                     command.ExecuteNonQuery();
                 }
@@ -180,7 +194,7 @@ namespace Scheduler.Core.Services
         {
             DataTable dataTable = new DataTable();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -197,7 +211,7 @@ namespace Scheduler.Core.Services
 
         public void UpdateCustomer(Customer updatedCustomer)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -212,9 +226,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@AddressId", updatedCustomer.AddressId);
                     command.Parameters.AddWithValue("@IsActive", updatedCustomer.IsActive);
                     command.Parameters.AddWithValue("@CreateDate", updatedCustomer.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", updatedCustomer.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", updatedCustomer.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", updatedCustomer.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", updatedCustomer.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", updatedCustomer.LastUpdateBy.Truncate(40));
                     command.Parameters.AddWithValue("@CustomerId", updatedCustomer.CustomerId);
 
                     command.ExecuteNonQuery();
@@ -224,7 +238,7 @@ namespace Scheduler.Core.Services
 
         public void DeleteCustomer(int customerId)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -245,7 +259,7 @@ namespace Scheduler.Core.Services
 
         public void CreateCountry(Country country)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -256,9 +270,9 @@ namespace Scheduler.Core.Services
                 {
                     command.Parameters.AddWithValue("@CountryName", country.CountryName);
                     command.Parameters.AddWithValue("@CreateDate", country.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", country.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", country.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", country.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", country.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", country.LastUpdateBy.Truncate(40));
 
                     command.ExecuteNonQuery();
                 }
@@ -269,7 +283,7 @@ namespace Scheduler.Core.Services
         {
             DataTable dataTable = new DataTable();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -286,7 +300,7 @@ namespace Scheduler.Core.Services
 
         public void UpdateCountry(Country updatedCountry)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -299,9 +313,9 @@ namespace Scheduler.Core.Services
                 {
                     command.Parameters.AddWithValue("@CountryName", updatedCountry.CountryName);
                     command.Parameters.AddWithValue("@CreateDate", updatedCountry.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", updatedCountry.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", updatedCountry.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", updatedCountry.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", updatedCountry.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", updatedCountry.LastUpdateBy.Truncate(40));
                     command.Parameters.AddWithValue("@CountryId", updatedCountry.CountryId);
 
                     command.ExecuteNonQuery();
@@ -311,7 +325,7 @@ namespace Scheduler.Core.Services
 
         public void DeleteCountry(int countryId)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -332,7 +346,7 @@ namespace Scheduler.Core.Services
 
         public void CreateCity(City city)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -344,9 +358,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@CityName", city.CityName);
                     command.Parameters.AddWithValue("@CountryId", city.CountryId);
                     command.Parameters.AddWithValue("@CreateDate", city.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", city.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", city.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", city.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", city.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", city.LastUpdateBy.Truncate(40));
 
                     command.ExecuteNonQuery();
                 }
@@ -357,7 +371,7 @@ namespace Scheduler.Core.Services
         {
             DataTable dataTable = new DataTable();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -374,7 +388,7 @@ namespace Scheduler.Core.Services
 
         public void UpdateCity(City updatedCity)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -388,9 +402,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@CityName", updatedCity.CityName);
                     command.Parameters.AddWithValue("@CountryId", updatedCity.CountryId);
                     command.Parameters.AddWithValue("@CreateDate", updatedCity.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", updatedCity.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", updatedCity.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", updatedCity.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", updatedCity.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", updatedCity.LastUpdateBy.Truncate(40));
                     command.Parameters.AddWithValue("@CityId", updatedCity.CityId);
 
                     command.ExecuteNonQuery();
@@ -400,7 +414,7 @@ namespace Scheduler.Core.Services
 
         public void DeleteCity(int cityId)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -421,7 +435,7 @@ namespace Scheduler.Core.Services
 
         public void CreateAddress(Address address)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -436,9 +450,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@PostalCode", address.PostalCode);
                     command.Parameters.AddWithValue("@Phone", address.Phone);
                     command.Parameters.AddWithValue("@CreateDate", address.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", address.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", address.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", address.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", address.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", address.LastUpdateBy.Truncate(40));
 
                     command.ExecuteNonQuery();
                 }
@@ -449,7 +463,7 @@ namespace Scheduler.Core.Services
         {
             DataTable dataTable = new DataTable();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -466,7 +480,7 @@ namespace Scheduler.Core.Services
 
         public void UpdateAddress(Address updatedAddress)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -484,9 +498,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@PostalCode", updatedAddress.PostalCode);
                     command.Parameters.AddWithValue("@Phone", updatedAddress.Phone);
                     command.Parameters.AddWithValue("@CreateDate", updatedAddress.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", updatedAddress.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", updatedAddress.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", updatedAddress.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", updatedAddress.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", updatedAddress.LastUpdateBy.Truncate(40));
                     command.Parameters.AddWithValue("@AddressId", updatedAddress.AddressId);
 
                     command.ExecuteNonQuery();
@@ -496,7 +510,7 @@ namespace Scheduler.Core.Services
 
         public void DeleteAddress(int addressId)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -517,7 +531,7 @@ namespace Scheduler.Core.Services
 
         public void CreateAppointment(Appointment appointment)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -539,9 +553,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@Start", appointment.Start);
                     command.Parameters.AddWithValue("@End", appointment.End);
                     command.Parameters.AddWithValue("@CreateDate", appointment.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", appointment.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", appointment.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", appointment.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", appointment.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", appointment.LastUpdateBy.Truncate(40));
 
                     command.ExecuteNonQuery();
                 }
@@ -552,7 +566,7 @@ namespace Scheduler.Core.Services
         {
             BindingList<Appointment> appointments = new BindingList<Appointment>();
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -597,9 +611,60 @@ namespace Scheduler.Core.Services
             return appointments;
         }
 
+        public Appointment AppointmentAlert(int userId)
+        {
+            Appointment appointment = new Appointment();
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            {
+                connection.Open();
+                DateTime currentDateAndTime = DateTime.UtcNow;
+                DateTime fifteenMinutesFromNow = currentDateAndTime.AddMinutes(15);
+
+                string query = "SELECT * " +
+                               "FROM appointment " +
+                               "WHERE @start >= @currentTime " +
+                               "AND @start <= @fifteenMinutesFromNow " +
+                               "AND userId = @userId";
+
+                using (MySqlCommand command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@userId", userId);
+                    command.Parameters.AddWithValue("@currentTime", currentDateAndTime);
+                    command.Parameters.AddWithValue("@fifteenMinutesFromNow", fifteenMinutesFromNow);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            appointment = new Appointment
+                            {
+                                AppointmentId = reader.GetInt32("appointmentId"),
+                                CustomerId = reader.GetInt32("customerId"),
+                                UserId = reader.GetInt32("userId"),
+                                Title = reader.GetString("title"),
+                                Description = reader.GetString("description"),
+                                Location = reader.GetString("location"),
+                                Contact = reader.GetString("contact"),
+                                Type = reader.GetString("type"),
+                                Url = reader.GetString("url"),
+                                Start = reader.GetDateTime("start"),
+                                End = reader.GetDateTime("end"),
+                                CreateDate = reader.GetDateTime("createDate"),
+                                CreatedBy = reader.GetString("createdBy"),
+                                LastUpdate = reader.GetDateTime("lastUpdate"),
+                                LastUpdateBy = reader.GetString("lastUpdateBy")
+                            };
+                        }
+                    }
+                }
+            }
+
+            return appointment;
+        }
+
         public void UpdateAppointment(Appointment updatedAppointment)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -623,9 +688,9 @@ namespace Scheduler.Core.Services
                     command.Parameters.AddWithValue("@Start", updatedAppointment.Start);
                     command.Parameters.AddWithValue("@End", updatedAppointment.End);
                     command.Parameters.AddWithValue("@CreateDate", updatedAppointment.CreateDate);
-                    command.Parameters.AddWithValue("@CreatedBy", updatedAppointment.CreatedBy);
+                    command.Parameters.AddWithValue("@CreatedBy", updatedAppointment.CreatedBy.Truncate(40));
                     command.Parameters.AddWithValue("@LastUpdate", updatedAppointment.LastUpdate);
-                    command.Parameters.AddWithValue("@LastUpdateBy", updatedAppointment.LastUpdateBy);
+                    command.Parameters.AddWithValue("@LastUpdateBy", updatedAppointment.LastUpdateBy.Truncate(40));
                     command.Parameters.AddWithValue("@AppointmentId", updatedAppointment.AppointmentId);
 
                     command.ExecuteNonQuery();
@@ -635,7 +700,7 @@ namespace Scheduler.Core.Services
 
         public void DeleteAppointment(int appointmentId)
         {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 
@@ -663,7 +728,7 @@ namespace Scheduler.Core.Services
                 valueText = valueText + "Name";
             }
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(_connectionString))
             {
                 connection.Open();
 

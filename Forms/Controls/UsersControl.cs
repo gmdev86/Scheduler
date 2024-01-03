@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using Scheduler.Core.Interfaces;
 using System.Windows.Forms;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
@@ -13,7 +12,7 @@ namespace Scheduler.Forms.Controls
     {
         #region Properties
 
-        private IDataService _dataService;
+        private DataService _dataService;
         private BindingSource _usersBindingSource;
 
         #endregion
@@ -25,7 +24,7 @@ namespace Scheduler.Forms.Controls
 
         private void UsersControl_Load(object sender, System.EventArgs e)
         {
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             InitializeDataBinding();
             LoadData();
         }
@@ -47,7 +46,7 @@ namespace Scheduler.Forms.Controls
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            UserAdministration userAdministration = new UserAdministration(new User(), _dataService);
+            UserAdministration userAdministration = new UserAdministration(new User());
             userAdministration.FormClosed += UserAdministration_FormClosed;
             if (this.ParentForm != null)
             {
@@ -94,7 +93,7 @@ namespace Scheduler.Forms.Controls
                     LastUpdate = DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now),
                     LastUpdateBy = (string)selectedRow.Cells["lastUpdateBy"].Value
                 };
-                UserAdministration userAdministration = new UserAdministration(user, _dataService);
+                UserAdministration userAdministration = new UserAdministration(user);
                 userAdministration.FormClosed += UserAdministration_FormClosed;
                 if (this.ParentForm != null)
                 {

@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using Scheduler.Core.Models;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Services;
 using System.Text;
 
@@ -16,16 +15,18 @@ namespace Scheduler.Forms.Controls
         public event EventHandler SaveClicked;
         private Form dynamicForm;
         private BindingList<SelectListItem> _countryListItems;
-        private IDataService _dataService;
+        private DataService _dataService;
         private City _city;
+        private UserSession _userSession;
 
         public CityModifyControl(City city)
         {
             InitializeComponent();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             _countryListItems = new BindingList<SelectListItem>();
             LoadCountries();
             _city = city;
+            _userSession = UserSession.Instance;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -111,9 +112,9 @@ namespace Scheduler.Forms.Controls
                 _city.CityName = txtCity.Text;
                 _city.CountryId = countryId;
                 _city.CreateDate = _city.CreateDate == DateTime.MinValue ? Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _city.CreateDate;
-                _city.CreatedBy = "System"; //todo: make sure to update to logged in user
+                _city.CreatedBy = string.IsNullOrWhiteSpace(_city.CreatedBy) ? _userSession.User.UserName : _city.CreatedBy;
                 _city.LastUpdate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
-                _city.LastUpdateBy = "System"; //todo: make sure to update to logged in user
+                _city.LastUpdateBy = _userSession.User.UserName;
 
                 try
                 {

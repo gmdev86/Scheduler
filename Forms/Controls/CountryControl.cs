@@ -1,5 +1,4 @@
-﻿using Scheduler.Core.Interfaces;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
 using Scheduler.Core.Localization;
@@ -13,7 +12,7 @@ namespace Scheduler.Forms.Controls
     {
         #region Properties
 
-        private IDataService _dataService;
+        private DataService _dataService;
         private BindingSource _countryBindingSource;
         private Form dynamicForm;
 
@@ -26,7 +25,7 @@ namespace Scheduler.Forms.Controls
 
         private void CountryControl_Load(object sender, System.EventArgs e)
         {
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             InitializeDataBinding();
             LoadData();
         }

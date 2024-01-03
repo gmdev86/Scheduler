@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
@@ -16,16 +15,18 @@ namespace Scheduler.Forms.Controls
         public event EventHandler SaveClicked;
         private Form dynamicForm;
         private BindingList<SelectListItem> _cityListItems;
-        private IDataService _dataService;
+        private DataService _dataService;
         private Address _address;
+        private UserSession _userSession;
 
         public AddressModifyControl(Address address)
         {
             InitializeComponent();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             _cityListItems = new BindingList<SelectListItem>();
             LoadCities();
             _address = address;
+            _userSession = UserSession.Instance;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -118,9 +119,9 @@ namespace Scheduler.Forms.Controls
                 _address.PostalCode = txtPostalCode.Text;
                 _address.Phone = txtPhoneNumber.Text;
                 _address.CreateDate = _address.CreateDate == DateTime.MinValue ? Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _address.CreateDate;
-                _address.CreatedBy = "System"; //todo: make sure to update to logged in user
+                _address.CreatedBy = string.IsNullOrWhiteSpace(_address.CreatedBy) ? _userSession.User.UserName : _address.CreatedBy;
                 _address.LastUpdate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
-                _address.LastUpdateBy = "System"; //todo: make sure to update to logged in user
+                _address.LastUpdateBy = _userSession.User.UserName;
 
                 try
                 {

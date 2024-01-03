@@ -297,6 +297,9 @@
   <data name="PostalCodeRequired" xml:space="preserve">
     <value>Postal Code: Required</value>
   </data>
+  <data name="ReportNotSelected" xml:space="preserve">
+    <value>Report not selected</value>
+  </data>
   <data name="SelectAddress" xml:space="preserve">
     <value>Please select Address.</value>
   </data>
@@ -311,6 +314,9 @@
   </data>
   <data name="SelectCustomer" xml:space="preserve">
     <value>Please select Customer.</value>
+  </data>
+  <data name="SelectReport" xml:space="preserve">
+    <value>Please select report</value>
   </data>
   <data name="SelectUser" xml:space="preserve">
     <value>Please select User.</value>

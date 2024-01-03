@@ -1,10 +1,16 @@
 ﻿using System.Windows.Forms;
 using Scheduler.Core.Enums;
+using Scheduler.Core.Models;
+using Scheduler.Core.Services;
+using Scheduler.Core.Utility;
 
 namespace Scheduler.Forms
 {
     public partial class Manager : Form
     {
+        private DataService _dataService;
+        private UserSession _userSession;
+
         public Manager()
         {
             InitializeComponent();
@@ -12,9 +18,21 @@ namespace Scheduler.Forms
 
         private void Manager_Load(object sender, System.EventArgs e)
         {
+            _dataService = DataService.Instance;
+            _userSession = UserSession.Instance;
             tabControl1.AutoSize = true;
             tabControl1.Width = calendarControl1.Width;
             tabControl1.Height = calendarControl1.Height + 20;
+            Appointment appointment = _dataService.AppointmentAlert(_userSession.User.UserId);
+
+            if (appointment != null)
+            {
+                MessageBox.Show(
+                    $"You have an upcoming appointment: {appointment.Type} @ {DateTimeConverter.UtcToLocalDateTime(appointment.Start)}",
+                    "Appointment Alert", 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
+            }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -48,6 +66,8 @@ namespace Scheduler.Forms
                     tabControl1.Height = countryControl1.Height + 20;
                     break;
                 case (int)Tabs.Reports:
+                    tabControl1.Width = reportsControl1.Width;
+                    tabControl1.Height = reportsControl1.Height + 20;
                     break;
             }
             

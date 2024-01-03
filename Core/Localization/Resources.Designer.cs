@@ -601,6 +601,15 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report not selected.
+        /// </summary>
+        public static string ReportNotSelected {
+            get {
+                return ResourceManager.GetString("ReportNotSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select Address..
         /// </summary>
         public static string SelectAddress {
@@ -642,6 +651,15 @@ namespace Scheduler.Core.Localization {
         public static string SelectCustomer {
             get {
                 return ResourceManager.GetString("SelectCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select report.
+        /// </summary>
+        public static string SelectReport {
+            get {
+                return ResourceManager.GetString("SelectReport", resourceCulture);
             }
         }
         

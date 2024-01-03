@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
@@ -13,7 +12,7 @@ namespace Scheduler.Forms.Controls
     {
         #region Properties
 
-        private IDataService _dataService;
+        private DataService _dataService;
         private BindingSource _customersBindingSource;
 
         #endregion
@@ -40,7 +39,7 @@ namespace Scheduler.Forms.Controls
 
         private void CustomersControl_Load(object sender, EventArgs e)
         {
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             InitializeDataBinding();
             LoadData();
         }

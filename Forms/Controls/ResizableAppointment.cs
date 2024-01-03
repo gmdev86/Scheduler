@@ -92,7 +92,6 @@ namespace Scheduler.Forms.Controls
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(29, 29);
             this.btnDelete.TabIndex = 0;
-            this.btnDelete.Text = char.ConvertFromUtf32((int)IconType.TrashO);
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.ForeColor = Color.White;

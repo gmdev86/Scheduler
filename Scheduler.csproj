@@ -99,7 +99,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Enums\IconType.cs" />
+    <Compile Include="Core\Enums\AppointmentType.cs" />
+    <Compile Include="Core\Enums\ReportType.cs" />
     <Compile Include="Core\Enums\Tabs.cs" />
     <Compile Include="Core\Localization\Resources.es-ES.Designer.cs">
       <DependentUpon>Resources.es-ES.resx</DependentUpon>
@@ -118,9 +119,11 @@
     </Compile>
     <Compile Include="Core\Models\AppointmentTime.cs" />
     <Compile Include="Core\Models\SelectListItem.cs" />
+    <Compile Include="Core\Services\ReportPrinter.cs" />
     <Compile Include="Core\Services\UserSession.cs" />
     <Compile Include="Core\Utility\DateTimeConverter.cs" />
     <Compile Include="Core\Utility\Dialog.cs" />
+    <Compile Include="Core\Utility\StringExtension.cs" />
     <Compile Include="Forms\Appointments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,7 +154,6 @@
     <Compile Include="Forms\Controls\BlankDayControl.Designer.cs">
       <DependentUpon>BlankDayControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\Interfaces\IDataService.cs" />
     <Compile Include="Core\Models\Address.cs" />
     <Compile Include="Core\Models\Appointment.cs" />
     <Compile Include="Core\Models\City.cs" />
@@ -306,6 +308,9 @@
     <EmbeddedResource Include="Forms\Controls\DayControl.resx">
       <DependentUpon>DayControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\ReportsControl.resx">
+      <DependentUpon>ReportsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\ResizableAppointment.resx">
       <DependentUpon>ResizableAppointment.cs</DependentUpon>
     </EmbeddedResource>
@@ -355,8 +360,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

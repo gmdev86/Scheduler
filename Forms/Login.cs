@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Windows.Forms;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
@@ -12,7 +11,7 @@ namespace Scheduler.Forms
     {
         #region Properties
         
-        private IDataService _dataService;
+        private DataService _dataService;
         private UserSession _userSession;
 
         #endregion
@@ -20,7 +19,7 @@ namespace Scheduler.Forms
         public Login()
         {
             InitializeComponent();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             _userSession = UserSession.Instance;
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;

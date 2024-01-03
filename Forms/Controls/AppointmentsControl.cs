@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Utility;
 using DateTimeConverter = Scheduler.Core.Utility.DateTimeConverter;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Services;
 
 namespace Scheduler.Forms.Controls
@@ -18,20 +17,20 @@ namespace Scheduler.Forms.Controls
         private BindingList<Appointment> _appointments;
         private BindingList<Appointment> _originalAppointments;
         private BindingSource _appointmentsBindingSource;
-        private IDataService _dataService;
+        private DataService _dataService;
 
         public AppointmentsControl()
         {
             InitializeComponent();
             _appointments = new BindingList<Appointment>();
             _originalAppointments = new BindingList<Appointment>();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
         }
 
         public AppointmentsControl(BindingList<Appointment> appointments)
         {
             InitializeComponent();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             if (appointments == null)
             {
                 appointments = new BindingList<Appointment>();

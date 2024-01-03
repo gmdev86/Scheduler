@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
@@ -15,16 +14,18 @@ namespace Scheduler.Forms
     {
         private Form dynamicForm;
         private BindingList<SelectListItem> _addressListItems;
-        private IDataService _dataService;
+        private DataService _dataService;
         private Customer _customer;
+        private UserSession _userSession;
 
         public CustomerAdministration(Customer customer)
         {
             InitializeComponent();
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             _addressListItems = new BindingList<SelectListItem>();
             LoadAddresses();
             _customer = customer;
+            _userSession = UserSession.Instance;
         }
 
         private void btnAddAddress_Click(object sender, System.EventArgs e)
@@ -113,9 +114,9 @@ namespace Scheduler.Forms
                 _customer.AddressId = addressId;
                 _customer.IsActive = cbActive.Checked;
                 _customer.CreateDate = _customer.CreateDate == DateTime.MinValue ? Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _customer.CreateDate;
-                _customer.CreatedBy = "System"; //todo: make sure to update to logged in user
+                _customer.CreatedBy = string.IsNullOrWhiteSpace(_customer.CreatedBy) ? _userSession.User.UserName : _customer.CreatedBy; 
                 _customer.LastUpdate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
-                _customer.LastUpdateBy = "System"; //todo: make sure to update to logged in user
+                _customer.LastUpdateBy = _userSession.User.UserName; 
 
                 try
                 {

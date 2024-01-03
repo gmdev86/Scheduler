@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Windows.Forms;
-using Scheduler.Core.Interfaces;
 using Scheduler.Core.Models;
+using Scheduler.Core.Services;
 using Scheduler.Core.Utility;
 using Resources = Scheduler.Core.Localization.Resources;
 
@@ -13,26 +13,28 @@ namespace Scheduler.Forms
         #region Properties
 
         private User _user;
-        private IDataService _dataService;
+        private DataService _dataService;
+        private UserSession _userSession;
 
         #endregion
 
         #region Constructors
 
-        public UserAdministration(User user, IDataService dataService)
+        public UserAdministration(User user)
         {
             InitializeComponent();
+            _dataService = DataService.Instance;
             lblValidationErrors.Text = string.Empty;
             lblValidationErrors.Visible = false;
             _user = user;
-            _dataService = dataService;
-
+            
             if (_user.UserId > 0)
             {
                 txtUsername.Text = _user.UserName;
                 txtPassword.Text = _user.Password;
                 cbActive.Checked = _user.Active;
             }
+            _userSession = UserSession.Instance;
         }
 
         #endregion
@@ -52,9 +54,9 @@ namespace Scheduler.Forms
                 _user.Password = txtPassword.Text;
                 _user.Active = cbActive.Checked;
                 _user.CreateDate = _user.CreateDate == DateTime.MinValue ? DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _user.CreateDate;
-                _user.CreatedBy = "System"; //todo: make sure to update to logged in user
+                _user.CreatedBy = string.IsNullOrWhiteSpace(_user.CreatedBy) ? _userSession.User.UserName : _user.CreatedBy; 
                 _user.LastUpdate = DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
-                _user.LastUpdateBy = "System"; //todo: make sure to update to logged in user
+                _user.LastUpdateBy = _userSession.User.UserName;
 
                 try
                 {

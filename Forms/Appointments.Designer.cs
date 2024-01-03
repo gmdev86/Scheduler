@@ -43,7 +43,6 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtContact = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.txtType = new System.Windows.Forms.TextBox();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -52,9 +51,10 @@
             this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.pnlTimes = new System.Windows.Forms.Panel();
+            this.timeSlotsControl = new Scheduler.Forms.Controls.TimeSlotsControl();
             this.pnlValidationErrors = new System.Windows.Forms.Panel();
             this.lblValidationErrors = new System.Windows.Forms.Label();
-            this.timeSlotsControl = new Scheduler.Forms.Controls.TimeSlotsControl();
+            this.cbType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -150,6 +150,7 @@
             // 
             // pnlUser
             // 
+            this.pnlUser.Controls.Add(this.cbType);
             this.pnlUser.Controls.Add(this.lblContact);
             this.pnlUser.Controls.Add(this.lblDescription);
             this.pnlUser.Controls.Add(this.lblUrl);
@@ -158,7 +159,6 @@
             this.pnlUser.Controls.Add(this.lblTitle);
             this.pnlUser.Controls.Add(this.txtContact);
             this.pnlUser.Controls.Add(this.txtDescription);
-            this.pnlUser.Controls.Add(this.txtType);
             this.pnlUser.Controls.Add(this.txtUrl);
             this.pnlUser.Controls.Add(this.txtLocation);
             this.pnlUser.Controls.Add(this.txtTitle);
@@ -240,13 +240,6 @@
             this.txtDescription.Size = new System.Drawing.Size(183, 20);
             this.txtDescription.TabIndex = 3;
             // 
-            // txtType
-            // 
-            this.txtType.Location = new System.Drawing.Point(30, 237);
-            this.txtType.Name = "txtType";
-            this.txtType.Size = new System.Drawing.Size(183, 20);
-            this.txtType.TabIndex = 6;
-            // 
             // txtUrl
             // 
             this.txtUrl.Location = new System.Drawing.Point(30, 303);
@@ -313,6 +306,18 @@
             this.pnlTimes.Size = new System.Drawing.Size(294, 350);
             this.pnlTimes.TabIndex = 4;
             // 
+            // timeSlotsControl
+            // 
+            this.timeSlotsControl.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.timeSlotsControl.Day = 1;
+            this.timeSlotsControl.Location = new System.Drawing.Point(0, 0);
+            this.timeSlotsControl.Margin = new System.Windows.Forms.Padding(0);
+            this.timeSlotsControl.Month = 1;
+            this.timeSlotsControl.Name = "timeSlotsControl";
+            this.timeSlotsControl.Size = new System.Drawing.Size(292, 246);
+            this.timeSlotsControl.TabIndex = 0;
+            this.timeSlotsControl.Year = 2024;
+            // 
             // pnlValidationErrors
             // 
             this.pnlValidationErrors.AutoSize = true;
@@ -338,17 +343,13 @@
             this.lblValidationErrors.TabIndex = 0;
             this.lblValidationErrors.Text = "Errors";
             // 
-            // timeSlotsControl
+            // cbType
             // 
-            this.timeSlotsControl.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.timeSlotsControl.Day = 1;
-            this.timeSlotsControl.Location = new System.Drawing.Point(0, 0);
-            this.timeSlotsControl.Margin = new System.Windows.Forms.Padding(0);
-            this.timeSlotsControl.Month = 1;
-            this.timeSlotsControl.Name = "timeSlotsControl";
-            this.timeSlotsControl.Size = new System.Drawing.Size(292, 246);
-            this.timeSlotsControl.TabIndex = 0;
-            this.timeSlotsControl.Year = 2024;
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Location = new System.Drawing.Point(30, 237);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(183, 21);
+            this.cbType.TabIndex = 16;
             // 
             // Appointments
             // 
@@ -399,7 +400,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.TextBox txtDescription;
-        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.TextBox txtTitle;
@@ -410,5 +410,6 @@
         private Controls.TimeSlotsControl timeSlotsControl;
         private System.Windows.Forms.Panel pnlValidationErrors;
         private System.Windows.Forms.Label lblValidationErrors;
+        private System.Windows.Forms.ComboBox cbType;
     }
 }

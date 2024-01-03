@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCalendar = new System.Windows.Forms.TabPage();
+            this.calendarControl1 = new Scheduler.Forms.Controls.CalendarControl();
             this.tpUsers = new System.Windows.Forms.TabPage();
             this.usersControl1 = new Scheduler.Forms.Controls.UsersControl();
             this.tpCustomers = new System.Windows.Forms.TabPage();
@@ -41,7 +42,7 @@
             this.tpCountry = new System.Windows.Forms.TabPage();
             this.countryControl1 = new Scheduler.Forms.Controls.CountryControl();
             this.tpReports = new System.Windows.Forms.TabPage();
-            this.calendarControl1 = new Scheduler.Forms.Controls.CalendarControl();
+            this.reportsControl1 = new Scheduler.Forms.Controls.ReportsControl();
             this.tabControl1.SuspendLayout();
             this.tpCalendar.SuspendLayout();
             this.tpUsers.SuspendLayout();
@@ -49,6 +50,7 @@
             this.tpAddress.SuspendLayout();
             this.tpCity.SuspendLayout();
             this.tpCountry.SuspendLayout();
+            this.tpReports.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -79,6 +81,16 @@
             this.tpCalendar.TabIndex = 0;
             this.tpCalendar.Text = "Calendar";
             this.tpCalendar.UseVisualStyleBackColor = true;
+            // 
+            // calendarControl1
+            // 
+            this.calendarControl1.AutoSize = true;
+            this.calendarControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.calendarControl1.Location = new System.Drawing.Point(0, 0);
+            this.calendarControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.calendarControl1.Name = "calendarControl1";
+            this.calendarControl1.Size = new System.Drawing.Size(772, 891);
+            this.calendarControl1.TabIndex = 0;
             // 
             // tpUsers
             // 
@@ -177,6 +189,7 @@
             // 
             // tpReports
             // 
+            this.tpReports.Controls.Add(this.reportsControl1);
             this.tpReports.Location = new System.Drawing.Point(4, 22);
             this.tpReports.Margin = new System.Windows.Forms.Padding(2);
             this.tpReports.Name = "tpReports";
@@ -185,15 +198,13 @@
             this.tpReports.Text = "Reports";
             this.tpReports.UseVisualStyleBackColor = true;
             // 
-            // calendarControl1
+            // reportsControl1
             // 
-            this.calendarControl1.AutoSize = true;
-            this.calendarControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.calendarControl1.Location = new System.Drawing.Point(0, 0);
-            this.calendarControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.calendarControl1.Name = "calendarControl1";
-            this.calendarControl1.Size = new System.Drawing.Size(1140, 1243);
-            this.calendarControl1.TabIndex = 0;
+            this.reportsControl1.Location = new System.Drawing.Point(3, 3);
+            this.reportsControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.reportsControl1.Name = "reportsControl1";
+            this.reportsControl1.Size = new System.Drawing.Size(1163, 644);
+            this.reportsControl1.TabIndex = 0;
             // 
             // Manager
             // 
@@ -219,6 +230,7 @@
             this.tpAddress.ResumeLayout(false);
             this.tpCity.ResumeLayout(false);
             this.tpCountry.ResumeLayout(false);
+            this.tpReports.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -239,5 +251,6 @@
         private Controls.CityControl cityControl1;
         private Controls.CountryControl countryControl1;
         private Controls.CalendarControl calendarControl1;
+        private Controls.ReportsControl reportsControl1;
     }
 }

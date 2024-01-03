@@ -1,5 +1,4 @@
-﻿using Scheduler.Core.Interfaces;
-using System;
+﻿using System;
 using System.Text;
 using System.Windows.Forms;
 using Scheduler.Core.Localization;
@@ -13,13 +12,16 @@ namespace Scheduler.Forms.Controls
     {
         public event EventHandler CancelClicked;
         public event EventHandler SaveClicked;
-        private IDataService _dataService;
+        private DataService _dataService;
         private Country _country;
+        private UserSession _userSession;
 
         public CountryModifyControl(Country country)
         {
             InitializeComponent();
             _country = country;
+            _userSession = UserSession.Instance;
+            _dataService = DataService.Instance;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -28,9 +30,9 @@ namespace Scheduler.Forms.Controls
             {
                 _country.CountryName = txtCountry.Text;
                 _country.CreateDate = _country.CreateDate == DateTime.MinValue ? DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _country.CreateDate;
-                _country.CreatedBy = "System"; //todo: make sure to update to logged in user
+                _country.CreatedBy = string.IsNullOrWhiteSpace(_country.CreatedBy) ? _userSession.User.UserName : _country.CreatedBy; 
                 _country.LastUpdate = DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
-                _country.LastUpdateBy = "System"; //todo: make sure to update to logged in user
+                _country.LastUpdateBy = _userSession.User.UserName; 
 
                 try
                 {
@@ -60,7 +62,6 @@ namespace Scheduler.Forms.Controls
 
         private void CountryModifyControl_Load(object sender, EventArgs e)
         {
-            _dataService = new DataService();
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
             if (_country.CountryId > 0)
