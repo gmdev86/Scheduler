@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Scheduler.Core.Enums;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
@@ -27,11 +28,14 @@ namespace Scheduler.Forms
 
             if (appointment != null)
             {
-                MessageBox.Show(
-                    $"You have an upcoming appointment: {appointment.Type} @ {DateTimeConverter.UtcToLocalDateTime(appointment.Start)}",
-                    "Appointment Alert", 
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                if (appointment.Start != DateTime.MinValue)
+                {
+                    MessageBox.Show(
+                        $"You have an upcoming appointment: {appointment.Type} @ {DateTimeConverter.UtcToLocalDateTime(appointment.Start)}",
+                        "Appointment Alert",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Asterisk);
+                }
             }
         }
 

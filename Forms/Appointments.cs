@@ -150,13 +150,13 @@ namespace Scheduler.Forms
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
 
-            if ((cbCustomer.Items[cbCustomer.SelectedIndex] as SelectListItem).Id == 0)
+            if (cbCustomer.SelectedIndex == -1 || (cbCustomer.Items[cbCustomer.SelectedIndex] as SelectListItem).Id == 0)
             {
                 isValid = false;
                 sb.AppendLine(Resources.CustomerRequired);
             }
 
-            if ((cbUser.Items[cbUser.SelectedIndex] as SelectListItem).Id == 0)
+            if (cbUser.SelectedIndex == -1 || (cbUser.Items[cbUser.SelectedIndex] as SelectListItem).Id == 0)
             {
                 isValid = false;
                 sb.AppendLine(Resources.UserRequired);

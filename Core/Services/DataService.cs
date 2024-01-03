@@ -3,7 +3,6 @@ using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Windows.Forms;
 using Scheduler.Core.Models;
 using Scheduler.Core.Utility;
 
@@ -22,7 +21,7 @@ namespace Scheduler.Core.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Missing or invalid connention string in App.config", "Invalid Connectionstring", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //This is empty so that it will use the fallback _connectionString to work in the designer
             }
         }
 
@@ -622,8 +621,8 @@ namespace Scheduler.Core.Services
 
                 string query = "SELECT * " +
                                "FROM appointment " +
-                               "WHERE @start >= @currentTime " +
-                               "AND @start <= @fifteenMinutesFromNow " +
+                               "WHERE start >= @currentTime " +
+                               "AND start <= @fifteenMinutesFromNow " +
                                "AND userId = @userId";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
