@@ -11,7 +11,7 @@ namespace Scheduler.Core.Services
 {
     public class DataService
     {
-        private string _connectionString = "CONNECT_STRING_GOES_HERE";
+        private string _connectionString = "Server=localhost;Port=3306;Database=schedule;Uid=test;Pwd=test;";
         private static DataService _instance;
 
         public DataService()
