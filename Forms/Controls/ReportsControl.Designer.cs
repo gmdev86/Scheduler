@@ -76,12 +76,15 @@
             // 
             // btnPrint
             // 
+            this.btnPrint.Image = global::Scheduler.Properties.Resources.printer_16xLG;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.Location = new System.Drawing.Point(984, 20);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(118, 48);
             this.btnPrint.TabIndex = 0;
             this.btnPrint.Text = "Print";
+            this.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -146,12 +149,14 @@
             // 
             // btnGenerate
             // 
+            this.btnGenerate.Image = global::Scheduler.Properties.Resources.GenerateResource_16x;
             this.btnGenerate.Location = new System.Drawing.Point(771, 80);
             this.btnGenerate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(114, 28);
+            this.btnGenerate.Size = new System.Drawing.Size(159, 28);
             this.btnGenerate.TabIndex = 3;
             this.btnGenerate.Text = "Generate Report";
+            this.btnGenerate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 

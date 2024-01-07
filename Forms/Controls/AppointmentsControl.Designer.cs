@@ -79,23 +79,27 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Image = global::Scheduler.Properties.Resources.Cancel_grey_16x;
             this.btnCancel.Location = new System.Drawing.Point(941, 12);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 38);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.Image = global::Scheduler.Properties.Resources.Delete_red;
             this.btnDelete.Location = new System.Drawing.Point(838, 12);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 38);
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -136,12 +140,14 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Image = global::Scheduler.Properties.Resources.Search_16x;
             this.btnSearch.Location = new System.Drawing.Point(617, 15);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

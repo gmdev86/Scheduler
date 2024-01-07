@@ -30,12 +30,11 @@ namespace Scheduler.Forms.Controls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DayControl));
             this.lblDay = new System.Windows.Forms.Label();
-            this.btnAddEvent = new System.Windows.Forms.Button();
             this.lblCount = new System.Windows.Forms.Label();
             this.lblAppointments = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnAddEvent = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDay
@@ -48,25 +47,6 @@ namespace Scheduler.Forms.Controls
             this.lblDay.TabIndex = 0;
             this.lblDay.Text = "00";
             this.lblDay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnAddEvent
-            // 
-            this.btnAddEvent.BackColor = System.Drawing.Color.White;
-            this.btnAddEvent.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddEvent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddEvent.ForeColor = System.Drawing.Color.White;
-            this.btnAddEvent.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEvent.Image")));
-            this.btnAddEvent.Location = new System.Drawing.Point(60, 4);
-            this.btnAddEvent.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddEvent.Name = "btnAddEvent";
-            this.btnAddEvent.Size = new System.Drawing.Size(32, 32);
-            this.btnAddEvent.TabIndex = 1;
-            this.btnAddEvent.UseVisualStyleBackColor = false;
-            this.btnAddEvent.Visible = false;
-            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
-            this.btnAddEvent.MouseEnter += new System.EventHandler(this.btnAddEvent_MouseEnter);
-            this.btnAddEvent.MouseLeave += new System.EventHandler(this.btnAddEvent_MouseLeave);
             // 
             // lblCount
             // 
@@ -86,6 +66,25 @@ namespace Scheduler.Forms.Controls
             this.lblAppointments.Size = new System.Drawing.Size(71, 13);
             this.lblAppointments.TabIndex = 3;
             this.lblAppointments.Text = "Appointments";
+            // 
+            // btnAddEvent
+            // 
+            this.btnAddEvent.BackColor = System.Drawing.Color.White;
+            this.btnAddEvent.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEvent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEvent.ForeColor = System.Drawing.Color.White;
+            this.btnAddEvent.Image = global::Scheduler.Properties.Resources.Add_16x;
+            this.btnAddEvent.Location = new System.Drawing.Point(60, 4);
+            this.btnAddEvent.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddEvent.Name = "btnAddEvent";
+            this.btnAddEvent.Size = new System.Drawing.Size(32, 32);
+            this.btnAddEvent.TabIndex = 1;
+            this.btnAddEvent.UseVisualStyleBackColor = false;
+            this.btnAddEvent.Visible = false;
+            this.btnAddEvent.Click += new System.EventHandler(this.btnAddEvent_Click);
+            this.btnAddEvent.MouseEnter += new System.EventHandler(this.btnAddEvent_MouseEnter);
+            this.btnAddEvent.MouseLeave += new System.EventHandler(this.btnAddEvent_MouseLeave);
             // 
             // DayControl
             // 

@@ -35,6 +35,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.pnlUser = new System.Windows.Forms.Panel();
+            this.cbType = new System.Windows.Forms.ComboBox();
             this.lblContact = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblUrl = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.timeSlotsControl = new Scheduler.Forms.Controls.TimeSlotsControl();
             this.pnlValidationErrors = new System.Windows.Forms.Panel();
             this.lblValidationErrors = new System.Windows.Forms.Label();
-            this.cbType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnlHeader.SuspendLayout();
@@ -104,23 +104,27 @@
             // 
             // btnSave
             // 
+            this.btnSave.Image = global::Scheduler.Properties.Resources.Save_16x;
             this.btnSave.Location = new System.Drawing.Point(561, 8);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 35);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.Image = global::Scheduler.Properties.Resources.Cancel_grey_16x;
             this.btnCancel.Location = new System.Drawing.Point(650, 8);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 10, 10);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(74, 35);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -171,6 +175,14 @@
             this.pnlUser.Name = "pnlUser";
             this.pnlUser.Size = new System.Drawing.Size(442, 350);
             this.pnlUser.TabIndex = 0;
+            // 
+            // cbType
+            // 
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Location = new System.Drawing.Point(30, 237);
+            this.cbType.Name = "cbType";
+            this.cbType.Size = new System.Drawing.Size(183, 21);
+            this.cbType.TabIndex = 16;
             // 
             // lblContact
             // 
@@ -342,14 +354,6 @@
             this.lblValidationErrors.Size = new System.Drawing.Size(34, 13);
             this.lblValidationErrors.TabIndex = 0;
             this.lblValidationErrors.Text = "Errors";
-            // 
-            // cbType
-            // 
-            this.cbType.FormattingEnabled = true;
-            this.cbType.Location = new System.Drawing.Point(30, 237);
-            this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(183, 21);
-            this.cbType.TabIndex = 16;
             // 
             // Appointments
             // 

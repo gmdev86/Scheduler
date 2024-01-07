@@ -69,7 +69,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 438);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(323, 283);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pnlValidationErrors
@@ -82,7 +82,7 @@
             this.pnlValidationErrors.Location = new System.Drawing.Point(0, 0);
             this.pnlValidationErrors.Margin = new System.Windows.Forms.Padding(0);
             this.pnlValidationErrors.Name = "pnlValidationErrors";
-            this.pnlValidationErrors.Size = new System.Drawing.Size(484, 39);
+            this.pnlValidationErrors.Size = new System.Drawing.Size(323, 25);
             this.pnlValidationErrors.TabIndex = 3;
             // 
             // lblValidationErrors
@@ -90,10 +90,10 @@
             this.lblValidationErrors.AutoSize = true;
             this.lblValidationErrors.BackColor = System.Drawing.Color.White;
             this.lblValidationErrors.ForeColor = System.Drawing.Color.Red;
-            this.lblValidationErrors.Location = new System.Drawing.Point(12, 9);
-            this.lblValidationErrors.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.lblValidationErrors.Location = new System.Drawing.Point(8, 6);
+            this.lblValidationErrors.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblValidationErrors.Name = "lblValidationErrors";
-            this.lblValidationErrors.Size = new System.Drawing.Size(126, 20);
+            this.lblValidationErrors.Size = new System.Drawing.Size(83, 13);
             this.lblValidationErrors.TabIndex = 0;
             this.lblValidationErrors.Text = "Validation Errors";
             // 
@@ -105,31 +105,35 @@
             this.pnlFooter.Controls.Add(this.btnSave);
             this.pnlFooter.Controls.Add(this.btnCancel);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 370);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 240);
             this.pnlFooter.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(484, 68);
+            this.pnlFooter.Size = new System.Drawing.Size(323, 43);
             this.pnlFooter.TabIndex = 0;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(245, 13);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnSave.Image = global::Scheduler.Properties.Resources.Save_16x;
+            this.btnSave.Location = new System.Drawing.Point(163, 8);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(107, 45);
+            this.btnSave.Size = new System.Drawing.Size(71, 29);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(374, 13);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnCancel.Image = global::Scheduler.Properties.Resources.Cancel_grey_16x;
+            this.btnCancel.Location = new System.Drawing.Point(249, 8);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 6);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 45);
+            this.btnCancel.Size = new System.Drawing.Size(65, 29);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -147,117 +151,131 @@
             this.pnlBody.Controls.Add(this.txtPostalCode);
             this.pnlBody.Controls.Add(this.txtAddress2);
             this.pnlBody.Controls.Add(this.txtAddress);
-            this.pnlBody.Location = new System.Drawing.Point(0, 39);
+            this.pnlBody.Location = new System.Drawing.Point(0, 25);
             this.pnlBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(484, 331);
+            this.pnlBody.Size = new System.Drawing.Size(323, 215);
             this.pnlBody.TabIndex = 4;
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(29, 279);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(19, 181);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPhoneNumber.MaxLength = 8;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(194, 26);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(131, 20);
             this.txtPhoneNumber.TabIndex = 11;
             this.txtPhoneNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnAddCity
             // 
-            this.btnAddCity.Location = new System.Drawing.Point(269, 110);
+            this.btnAddCity.Image = global::Scheduler.Properties.Resources.Add_16x;
+            this.btnAddCity.Location = new System.Drawing.Point(179, 72);
+            this.btnAddCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddCity.Name = "btnAddCity";
-            this.btnAddCity.Size = new System.Drawing.Size(99, 46);
+            this.btnAddCity.Size = new System.Drawing.Size(74, 30);
             this.btnAddCity.TabIndex = 10;
             this.btnAddCity.Text = "Add City";
+            this.btnAddCity.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddCity.UseVisualStyleBackColor = true;
             this.btnAddCity.Click += new System.EventHandler(this.btnAddCity_Click);
             // 
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(25, 96);
+            this.lblCity.Location = new System.Drawing.Point(17, 62);
+            this.lblCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(45, 20);
+            this.lblCity.Size = new System.Drawing.Size(31, 13);
             this.lblCity.TabIndex = 9;
             this.lblCity.Text = "City*:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 256);
+            this.label4.Location = new System.Drawing.Point(17, 166);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 20);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Phone*:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 180);
+            this.label3.Location = new System.Drawing.Point(17, 117);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 20);
+            this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Postal Code*:";
             // 
             // lblAddress2
             // 
             this.lblAddress2.AutoSize = true;
-            this.lblAddress2.Location = new System.Drawing.Point(265, 19);
+            this.lblAddress2.Location = new System.Drawing.Point(177, 12);
+            this.lblAddress2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress2.Name = "lblAddress2";
-            this.lblAddress2.Size = new System.Drawing.Size(85, 20);
+            this.lblAddress2.Size = new System.Drawing.Size(57, 13);
             this.lblAddress2.TabIndex = 6;
             this.lblAddress2.Text = "Address 2:";
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(25, 19);
+            this.lblAddress.Location = new System.Drawing.Point(17, 12);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(78, 20);
+            this.lblAddress.Size = new System.Drawing.Size(52, 13);
             this.lblAddress.TabIndex = 5;
             this.lblAddress.Text = "Address*:";
             // 
             // cbCity
             // 
             this.cbCity.FormattingEnabled = true;
-            this.cbCity.Location = new System.Drawing.Point(29, 119);
+            this.cbCity.Location = new System.Drawing.Point(19, 77);
+            this.cbCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbCity.Name = "cbCity";
-            this.cbCity.Size = new System.Drawing.Size(194, 28);
+            this.cbCity.Size = new System.Drawing.Size(131, 21);
             this.cbCity.TabIndex = 4;
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(29, 203);
+            this.txtPostalCode.Location = new System.Drawing.Point(19, 132);
+            this.txtPostalCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPostalCode.MaxLength = 10;
             this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(194, 26);
+            this.txtPostalCode.Size = new System.Drawing.Size(131, 20);
             this.txtPostalCode.TabIndex = 2;
             // 
             // txtAddress2
             // 
-            this.txtAddress2.Location = new System.Drawing.Point(269, 42);
+            this.txtAddress2.Location = new System.Drawing.Point(179, 27);
+            this.txtAddress2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAddress2.MaxLength = 50;
             this.txtAddress2.Name = "txtAddress2";
-            this.txtAddress2.Size = new System.Drawing.Size(179, 26);
+            this.txtAddress2.Size = new System.Drawing.Size(121, 20);
             this.txtAddress2.TabIndex = 1;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(29, 42);
+            this.txtAddress.Location = new System.Drawing.Point(19, 27);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAddress.MaxLength = 50;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(194, 26);
+            this.txtAddress.Size = new System.Drawing.Size(131, 20);
             this.txtAddress.TabIndex = 0;
             // 
             // AddressModifyControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddressModifyControl";
-            this.Size = new System.Drawing.Size(484, 438);
+            this.Size = new System.Drawing.Size(323, 283);
             this.Load += new System.EventHandler(this.AddressModifyControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

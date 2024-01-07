@@ -54,34 +54,40 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Image = global::Scheduler.Properties.Resources.Delete_red;
             this.btnDelete.Location = new System.Drawing.Point(963, 12);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(93, 38);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnModify
             // 
+            this.btnModify.Image = global::Scheduler.Properties.Resources.pencil_003_16xMD;
             this.btnModify.Location = new System.Drawing.Point(853, 12);
             this.btnModify.Margin = new System.Windows.Forms.Padding(2);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(91, 38);
             this.btnModify.TabIndex = 1;
             this.btnModify.Text = "Modify";
+            this.btnModify.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModify.UseVisualStyleBackColor = true;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.Image = global::Scheduler.Properties.Resources.Add_16x;
             this.btnAdd.Location = new System.Drawing.Point(734, 11);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(93, 40);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -123,12 +129,14 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Image = global::Scheduler.Properties.Resources.Search_16x;
             this.btnSearch.Location = new System.Drawing.Point(477, 19);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(101, 23);
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
+            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

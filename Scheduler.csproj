@@ -271,6 +271,12 @@
     <None Include="Core\Images\GoToReference_16x.png" />
     <None Include="Core\Images\Report_16x.png" />
     <None Include="Core\Images\Settings_16x.png" />
+    <None Include="Core\Images\Search_16x.png" />
+    <None Include="Core\Images\Add_16x.png" />
+    <None Include="Core\Images\pencil_003_16xMD.png" />
+    <None Include="Core\Images\Delete_red.png" />
+    <None Include="Core\Images\GenerateResource_16x.png" />
+    <None Include="Core\Images\printer_16xLG.png" />
     <Content Include="Core\Images\square_plus.png" />
     <Content Include="Core\Images\square_plus30x30.png" />
     <Content Include="Core\Images\square_plus_green30x30.png" />

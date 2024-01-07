@@ -63,6 +63,16 @@ namespace Scheduler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_16x {
+            get {
+                object obj = ResourceManager.GetObject("Add_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Address_16x {
             get {
                 object obj = ResourceManager.GetObject("Address_16x", resourceCulture);
@@ -96,6 +106,26 @@ namespace Scheduler.Properties {
         internal static System.Drawing.Bitmap Cancel_grey_16x {
             get {
                 object obj = ResourceManager.GetObject("Cancel_grey_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Delete_red {
+            get {
+                object obj = ResourceManager.GetObject("Delete_red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GenerateResource_16x {
+            get {
+                object obj = ResourceManager.GetObject("GenerateResource_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,6 +173,26 @@ namespace Scheduler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pencil_003_16xMD {
+            get {
+                object obj = ResourceManager.GetObject("pencil_003_16xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap printer_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("printer_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Report_16x {
             get {
                 object obj = ResourceManager.GetObject("Report_16x", resourceCulture);
@@ -156,6 +206,16 @@ namespace Scheduler.Properties {
         internal static System.Drawing.Bitmap Save_16x {
             get {
                 object obj = ResourceManager.GetObject("Save_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_16x {
+            get {
+                object obj = ResourceManager.GetObject("Search_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

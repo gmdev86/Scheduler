@@ -57,12 +57,13 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(450, 318);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(301, 205);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pnlValidationErrors
@@ -75,7 +76,7 @@
             this.pnlValidationErrors.Location = new System.Drawing.Point(0, 0);
             this.pnlValidationErrors.Margin = new System.Windows.Forms.Padding(0);
             this.pnlValidationErrors.Name = "pnlValidationErrors";
-            this.pnlValidationErrors.Size = new System.Drawing.Size(450, 39);
+            this.pnlValidationErrors.Size = new System.Drawing.Size(301, 25);
             this.pnlValidationErrors.TabIndex = 3;
             // 
             // lblValidationErrors
@@ -83,10 +84,10 @@
             this.lblValidationErrors.AutoSize = true;
             this.lblValidationErrors.BackColor = System.Drawing.Color.White;
             this.lblValidationErrors.ForeColor = System.Drawing.Color.Red;
-            this.lblValidationErrors.Location = new System.Drawing.Point(12, 9);
-            this.lblValidationErrors.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.lblValidationErrors.Location = new System.Drawing.Point(8, 6);
+            this.lblValidationErrors.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblValidationErrors.Name = "lblValidationErrors";
-            this.lblValidationErrors.Size = new System.Drawing.Size(126, 20);
+            this.lblValidationErrors.Size = new System.Drawing.Size(83, 13);
             this.lblValidationErrors.TabIndex = 0;
             this.lblValidationErrors.Text = "Validation Errors";
             // 
@@ -98,31 +99,35 @@
             this.pnFooter.Controls.Add(this.btnSave);
             this.pnFooter.Controls.Add(this.btnCancel);
             this.pnFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnFooter.Location = new System.Drawing.Point(0, 249);
+            this.pnFooter.Location = new System.Drawing.Point(0, 161);
             this.pnFooter.Margin = new System.Windows.Forms.Padding(0);
             this.pnFooter.Name = "pnFooter";
-            this.pnFooter.Size = new System.Drawing.Size(450, 69);
+            this.pnFooter.Size = new System.Drawing.Size(301, 44);
             this.pnFooter.TabIndex = 0;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(214, 14);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnSave.Image = global::Scheduler.Properties.Resources.Save_16x;
+            this.btnSave.Location = new System.Drawing.Point(143, 9);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(107, 45);
+            this.btnSave.Size = new System.Drawing.Size(71, 29);
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(343, 14);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 3, 10, 10);
+            this.btnCancel.Image = global::Scheduler.Properties.Resources.Cancel_grey_16x;
+            this.btnCancel.Location = new System.Drawing.Point(229, 9);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 7, 6);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 45);
+            this.btnCancel.Size = new System.Drawing.Size(65, 29);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -133,64 +138,72 @@
             this.panel1.Controls.Add(this.txtCity);
             this.panel1.Controls.Add(this.lblCountry);
             this.panel1.Controls.Add(this.lblCity);
-            this.panel1.Location = new System.Drawing.Point(0, 39);
+            this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 210);
+            this.panel1.Size = new System.Drawing.Size(300, 136);
             this.panel1.TabIndex = 2;
             // 
             // btnAddCountry
             // 
-            this.btnAddCountry.Location = new System.Drawing.Point(301, 143);
+            this.btnAddCountry.Image = global::Scheduler.Properties.Resources.Add_16x;
+            this.btnAddCountry.Location = new System.Drawing.Point(201, 93);
+            this.btnAddCountry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddCountry.Name = "btnAddCountry";
-            this.btnAddCountry.Size = new System.Drawing.Size(123, 48);
+            this.btnAddCountry.Size = new System.Drawing.Size(93, 31);
             this.btnAddCountry.TabIndex = 4;
             this.btnAddCountry.Text = "Add Country";
+            this.btnAddCountry.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddCountry.UseVisualStyleBackColor = true;
             this.btnAddCountry.Click += new System.EventHandler(this.btnAddCountry_Click);
             // 
             // cbCountry
             // 
             this.cbCountry.FormattingEnabled = true;
-            this.cbCountry.Location = new System.Drawing.Point(25, 154);
+            this.cbCountry.Location = new System.Drawing.Point(17, 100);
+            this.cbCountry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbCountry.Name = "cbCountry";
-            this.cbCountry.Size = new System.Drawing.Size(240, 28);
+            this.cbCountry.Size = new System.Drawing.Size(161, 21);
             this.cbCountry.TabIndex = 3;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(25, 55);
+            this.txtCity.Location = new System.Drawing.Point(17, 36);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(240, 26);
+            this.txtCity.Size = new System.Drawing.Size(161, 20);
             this.txtCity.TabIndex = 2;
             // 
             // lblCountry
             // 
             this.lblCountry.AutoSize = true;
-            this.lblCountry.Location = new System.Drawing.Point(21, 116);
+            this.lblCountry.Location = new System.Drawing.Point(14, 75);
+            this.lblCountry.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(74, 20);
+            this.lblCountry.Size = new System.Drawing.Size(50, 13);
             this.lblCountry.TabIndex = 1;
             this.lblCountry.Text = "Country*:";
             // 
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(21, 22);
+            this.lblCity.Location = new System.Drawing.Point(14, 14);
+            this.lblCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(45, 20);
+            this.lblCity.Size = new System.Drawing.Size(31, 13);
             this.lblCity.TabIndex = 0;
             this.lblCity.Text = "City*:";
             // 
             // CityModifyControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CityModifyControl";
-            this.Size = new System.Drawing.Size(450, 318);
+            this.Size = new System.Drawing.Size(301, 205);
             this.Load += new System.EventHandler(this.CityModifyControl_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
