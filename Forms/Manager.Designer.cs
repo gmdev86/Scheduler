@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manager));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCalendar = new System.Windows.Forms.TabPage();
             this.calendarControl1 = new Scheduler.Forms.Controls.CalendarControl();
@@ -43,6 +45,7 @@
             this.countryControl1 = new Scheduler.Forms.Controls.CountryControl();
             this.tpReports = new System.Windows.Forms.TabPage();
             this.reportsControl1 = new Scheduler.Forms.Controls.ReportsControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl1.SuspendLayout();
             this.tpCalendar.SuspendLayout();
             this.tpUsers.SuspendLayout();
@@ -63,6 +66,7 @@
             this.tabControl1.Controls.Add(this.tpCountry);
             this.tabControl1.Controls.Add(this.tpReports);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
@@ -74,10 +78,11 @@
             // tpCalendar
             // 
             this.tpCalendar.Controls.Add(this.calendarControl1);
-            this.tpCalendar.Location = new System.Drawing.Point(4, 22);
+            this.tpCalendar.ImageIndex = 0;
+            this.tpCalendar.Location = new System.Drawing.Point(4, 23);
             this.tpCalendar.Margin = new System.Windows.Forms.Padding(0);
             this.tpCalendar.Name = "tpCalendar";
-            this.tpCalendar.Size = new System.Drawing.Size(1211, 898);
+            this.tpCalendar.Size = new System.Drawing.Size(1211, 897);
             this.tpCalendar.TabIndex = 0;
             this.tpCalendar.Text = "Calendar";
             this.tpCalendar.UseVisualStyleBackColor = true;
@@ -95,10 +100,11 @@
             // tpUsers
             // 
             this.tpUsers.Controls.Add(this.usersControl1);
-            this.tpUsers.Location = new System.Drawing.Point(4, 22);
+            this.tpUsers.ImageIndex = 1;
+            this.tpUsers.Location = new System.Drawing.Point(4, 23);
             this.tpUsers.Margin = new System.Windows.Forms.Padding(0);
             this.tpUsers.Name = "tpUsers";
-            this.tpUsers.Size = new System.Drawing.Size(1211, 898);
+            this.tpUsers.Size = new System.Drawing.Size(1211, 897);
             this.tpUsers.TabIndex = 1;
             this.tpUsers.Text = "Users";
             this.tpUsers.UseVisualStyleBackColor = true;
@@ -114,10 +120,11 @@
             // tpCustomers
             // 
             this.tpCustomers.Controls.Add(this.customersControl1);
-            this.tpCustomers.Location = new System.Drawing.Point(4, 22);
+            this.tpCustomers.ImageIndex = 2;
+            this.tpCustomers.Location = new System.Drawing.Point(4, 23);
             this.tpCustomers.Margin = new System.Windows.Forms.Padding(2);
             this.tpCustomers.Name = "tpCustomers";
-            this.tpCustomers.Size = new System.Drawing.Size(1211, 898);
+            this.tpCustomers.Size = new System.Drawing.Size(1211, 897);
             this.tpCustomers.TabIndex = 2;
             this.tpCustomers.Text = "Customers";
             this.tpCustomers.UseVisualStyleBackColor = true;
@@ -133,10 +140,11 @@
             // tpAddress
             // 
             this.tpAddress.Controls.Add(this.addressControl1);
-            this.tpAddress.Location = new System.Drawing.Point(4, 22);
+            this.tpAddress.ImageIndex = 3;
+            this.tpAddress.Location = new System.Drawing.Point(4, 23);
             this.tpAddress.Margin = new System.Windows.Forms.Padding(2);
             this.tpAddress.Name = "tpAddress";
-            this.tpAddress.Size = new System.Drawing.Size(1211, 898);
+            this.tpAddress.Size = new System.Drawing.Size(1211, 897);
             this.tpAddress.TabIndex = 3;
             this.tpAddress.Text = "Address";
             this.tpAddress.UseVisualStyleBackColor = true;
@@ -152,10 +160,11 @@
             // tpCity
             // 
             this.tpCity.Controls.Add(this.cityControl1);
-            this.tpCity.Location = new System.Drawing.Point(4, 22);
+            this.tpCity.ImageIndex = 4;
+            this.tpCity.Location = new System.Drawing.Point(4, 23);
             this.tpCity.Margin = new System.Windows.Forms.Padding(2);
             this.tpCity.Name = "tpCity";
-            this.tpCity.Size = new System.Drawing.Size(1211, 898);
+            this.tpCity.Size = new System.Drawing.Size(1211, 897);
             this.tpCity.TabIndex = 4;
             this.tpCity.Text = "City";
             this.tpCity.UseVisualStyleBackColor = true;
@@ -171,10 +180,11 @@
             // tpCountry
             // 
             this.tpCountry.Controls.Add(this.countryControl1);
-            this.tpCountry.Location = new System.Drawing.Point(4, 22);
+            this.tpCountry.ImageIndex = 5;
+            this.tpCountry.Location = new System.Drawing.Point(4, 23);
             this.tpCountry.Margin = new System.Windows.Forms.Padding(2);
             this.tpCountry.Name = "tpCountry";
-            this.tpCountry.Size = new System.Drawing.Size(1211, 898);
+            this.tpCountry.Size = new System.Drawing.Size(1211, 897);
             this.tpCountry.TabIndex = 5;
             this.tpCountry.Text = "Country";
             this.tpCountry.UseVisualStyleBackColor = true;
@@ -190,10 +200,11 @@
             // tpReports
             // 
             this.tpReports.Controls.Add(this.reportsControl1);
-            this.tpReports.Location = new System.Drawing.Point(4, 22);
+            this.tpReports.ImageIndex = 6;
+            this.tpReports.Location = new System.Drawing.Point(4, 23);
             this.tpReports.Margin = new System.Windows.Forms.Padding(2);
             this.tpReports.Name = "tpReports";
-            this.tpReports.Size = new System.Drawing.Size(1211, 898);
+            this.tpReports.Size = new System.Drawing.Size(1211, 897);
             this.tpReports.TabIndex = 6;
             this.tpReports.Text = "Reports";
             this.tpReports.UseVisualStyleBackColor = true;
@@ -206,6 +217,18 @@
             this.reportsControl1.Size = new System.Drawing.Size(1163, 644);
             this.reportsControl1.TabIndex = 0;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Calendar_16x.png");
+            this.imageList1.Images.SetKeyName(1, "User_16x.png");
+            this.imageList1.Images.SetKeyName(2, "UserCode_16x.png");
+            this.imageList1.Images.SetKeyName(3, "Address_16x.png");
+            this.imageList1.Images.SetKeyName(4, "Building_16xLG.png");
+            this.imageList1.Images.SetKeyName(5, "globe_16xLG.png");
+            this.imageList1.Images.SetKeyName(6, "Report_16x.png");
+            // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +237,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1219, 924);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -252,5 +276,6 @@
         private Controls.CountryControl countryControl1;
         private Controls.CalendarControl calendarControl1;
         private Controls.ReportsControl reportsControl1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

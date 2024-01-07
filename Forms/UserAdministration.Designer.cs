@@ -30,8 +30,6 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.pnlValidationErrors = new System.Windows.Forms.Panel();
             this.lblValidationErrors = new System.Windows.Forms.Label();
             this.pnlBody = new System.Windows.Forms.Panel();
@@ -42,6 +40,8 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlValidationErrors.SuspendLayout();
@@ -80,28 +80,6 @@
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(337, 40);
             this.pnlFooter.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(176, 5);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(71, 29);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(262, 5);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(65, 29);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // pnlValidationErrors
             // 
@@ -157,7 +135,7 @@
             // txtPasswordConfirm
             // 
             this.txtPasswordConfirm.Location = new System.Drawing.Point(183, 107);
-            this.txtPasswordConfirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPasswordConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.Size = new System.Drawing.Size(137, 20);
             this.txtPasswordConfirm.TabIndex = 5;
@@ -169,7 +147,7 @@
             this.cbActive.Checked = true;
             this.cbActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbActive.Location = new System.Drawing.Point(22, 153);
-            this.cbActive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbActive.Margin = new System.Windows.Forms.Padding(2);
             this.cbActive.Name = "cbActive";
             this.cbActive.Size = new System.Drawing.Size(56, 17);
             this.cbActive.TabIndex = 6;
@@ -199,7 +177,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(22, 107);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(137, 20);
             this.txtPassword.TabIndex = 3;
@@ -208,10 +186,38 @@
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(22, 45);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(137, 20);
             this.txtUsername.TabIndex = 1;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::Scheduler.Properties.Resources.Save_16x;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(176, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(71, 29);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Image = global::Scheduler.Properties.Resources.Cancel_grey_16x;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(262, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(65, 29);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // UserAdministration
             // 
@@ -222,7 +228,7 @@
             this.ClientSize = new System.Drawing.Size(337, 309);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UserAdministration";

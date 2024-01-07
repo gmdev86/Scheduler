@@ -258,6 +258,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Core\Images\UserCode_16x.png" />
+    <None Include="Core\Images\User_16x.png" />
+    <None Include="Core\Images\Cancel_grey_16x.png" />
+    <None Include="Core\Images\Save_16x.png" />
+    <None Include="Core\Images\Address_16x.png" />
+    <None Include="Core\Images\Building_16xLG.png" />
+    <None Include="Core\Images\Calendar_16x.png" />
+    <None Include="Core\Images\globe_16xLG.png" />
+    <None Include="Core\Images\GoToFirstRow_16x.png" />
+    <None Include="Core\Images\GoToLastRow_16x.png" />
+    <None Include="Core\Images\GoToReference_16x.png" />
+    <None Include="Core\Images\Report_16x.png" />
+    <None Include="Core\Images\Settings_16x.png" />
     <Content Include="Core\Images\square_plus.png" />
     <Content Include="Core\Images\square_plus30x30.png" />
     <Content Include="Core\Images\square_plus_green30x30.png" />

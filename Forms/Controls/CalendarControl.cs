@@ -567,21 +567,26 @@ namespace Scheduler.Forms.Controls
             // 
             // btnPrev
             // 
+            this.btnPrev.Image = global::Scheduler.Properties.Resources.GoToFirstRow_16x;
             this.btnPrev.Location = new System.Drawing.Point(20, 12);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(180, 45);
             this.btnPrev.TabIndex = 1;
             this.btnPrev.Text = "Previous";
+            this.btnPrev.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrev.UseVisualStyleBackColor = true;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // btnNext
             // 
+            this.btnNext.Image = global::Scheduler.Properties.Resources.GoToLastRow_16x;
             this.btnNext.Location = new System.Drawing.Point(609, 12);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(142, 45);
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Next";
+            this.btnNext.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNext.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 

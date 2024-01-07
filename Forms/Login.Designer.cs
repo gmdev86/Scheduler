@@ -29,7 +29,7 @@ namespace Scheduler.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogin = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -37,25 +37,15 @@ namespace Scheduler.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.pnlValidationErrors = new System.Windows.Forms.Panel();
             this.lblValidationErrors = new System.Windows.Forms.Label();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             this.pnlValidationErrors.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(132, 16);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 10);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(87, 27);
-            this.btnLogin.TabIndex = 0;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblUsername
             // 
@@ -143,16 +133,6 @@ namespace Scheduler.Forms
             this.pnlFooter.Size = new System.Drawing.Size(745, 257);
             this.pnlFooter.TabIndex = 1;
             // 
-            // btnSettings
-            // 
-            this.btnSettings.Location = new System.Drawing.Point(10, 16);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(83, 27);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
             // pnlValidationErrors
             // 
             this.pnlValidationErrors.AutoSize = true;
@@ -177,6 +157,33 @@ namespace Scheduler.Forms
             this.lblValidationErrors.TabIndex = 0;
             this.lblValidationErrors.Text = "Errors";
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Image = global::Scheduler.Properties.Resources.Settings_16x;
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.Location = new System.Drawing.Point(10, 16);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(83, 27);
+            this.btnSettings.TabIndex = 5;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Image = global::Scheduler.Properties.Resources.GoToReference_16x;
+            this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogin.Location = new System.Drawing.Point(132, 16);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 10);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(87, 27);
+            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +192,7 @@ namespace Scheduler.Forms
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(745, 442);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
