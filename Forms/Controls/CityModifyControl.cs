@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
 using System.Text;
+using Scheduler.Core.Utility;
 
 namespace Scheduler.Forms.Controls
 {
@@ -104,13 +105,6 @@ namespace Scheduler.Forms.Controls
         {
             if (IsValid())
             {
-                var countryId = 0;
-                if (cbCountry.SelectedItem != null)
-                {
-                    countryId = (cbCountry.SelectedItem as SelectListItem).Id;
-                }
-                _city.CityName = txtCity.Text;
-                _city.CountryId = countryId;
                 _city.CreateDate = _city.CreateDate == DateTime.MinValue ? Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _city.CreateDate;
                 _city.CreatedBy = string.IsNullOrWhiteSpace(_city.CreatedBy) ? _userSession.User.UserName : _city.CreatedBy;
                 _city.LastUpdate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
@@ -144,28 +138,29 @@ namespace Scheduler.Forms.Controls
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
 
-            if (string.IsNullOrEmpty(txtCity.Text))
+            var countryId = 0;
+            if (cbCountry.SelectedItem != null)
             {
-                sb.AppendLine(Resources.CityRequired);
-                isValid = false;
+                countryId = (cbCountry.SelectedItem as SelectListItem).Id;
             }
+            _city.CityName = txtCity.Trim();
+            _city.CountryId = countryId;
 
-            if (txtCity.Text.Length > 50)
-            {
-                sb.AppendLine(Resources.CityMax);
-                isValid = false;
-            }
+            var validationErrors = new Validator<City>(_city)
+                .Required(x => x.CityName, Resources.CityRequired)
+                .MustBeTrue(x => x.CityName.Length <= 50, Resources.CityMax)
+                .MustBeTrue(x => x.CountryId > 0, Resources.CountryRequired)
+                .Validate();
 
-            if (!(cbCountry.SelectedItem is SelectListItem))
+            if (validationErrors.Count > 0)
             {
-                sb.AppendLine(Resources.CountryRequired);
-                isValid = false;
-            }
-
-            if (!isValid)
-            {
+                foreach (ValidationError validationError in validationErrors)
+                {
+                    sb.AppendLine(validationError.ErrorMessage);
+                }
                 pnlValidationErrors.Visible = true;
                 lblValidationErrors.Text = sb.ToString();
+                isValid = false;
             }
 
             return isValid;

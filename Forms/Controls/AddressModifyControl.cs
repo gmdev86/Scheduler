@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
+using Scheduler.Core.Utility;
 
 namespace Scheduler.Forms.Controls
 {
@@ -107,17 +108,6 @@ namespace Scheduler.Forms.Controls
         {
             if (IsValid())
             {
-                var cityId = 0;
-                if (cbCity.SelectedItem != null)
-                {
-                    cityId = (cbCity.SelectedItem as SelectListItem).Id;
-                }
-
-                _address.AddressLine1 = txtAddress.Text;
-                _address.AddressLine2 = txtAddress2.Text.Length == 0 ? string.Empty : txtAddress2.Text;
-                _address.CityId = cityId;
-                _address.PostalCode = txtPostalCode.Text;
-                _address.Phone = txtPhoneNumber.Text;
                 _address.CreateDate = _address.CreateDate == DateTime.MinValue ? Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _address.CreateDate;
                 _address.CreatedBy = string.IsNullOrWhiteSpace(_address.CreatedBy) ? _userSession.User.UserName : _address.CreatedBy;
                 _address.LastUpdate = Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
@@ -151,64 +141,40 @@ namespace Scheduler.Forms.Controls
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            var cityId = 0;
+            if (cbCity.SelectedItem != null)
             {
-                sb.AppendLine(Resources.AddressRequired);
-                isValid = false;
+                cityId = (cbCity.SelectedItem as SelectListItem).Id;
             }
 
-            if (txtAddress.Text.Length > 50)
-            {
-                sb.AppendLine(Resources.AddressMax);
-                isValid = false;
-            }
+            _address.AddressLine1 = txtAddress.Trim();
+            _address.AddressLine2 = txtAddress2.Trim().Length == 0 ? string.Empty : txtAddress2.Trim();
+            _address.CityId = cityId;
+            _address.PostalCode = txtPostalCode.Trim();
+            _address.Phone = txtPhoneNumber.Trim();
 
-            if (txtAddress2.Text.Length > 50)
-            {
-                sb.AppendLine(Resources.Address2Max);
-                isValid = false;
-            }
+            var validationErrors = new Validator<Address>(_address)
+                .Required(x => x.AddressLine1, Resources.AddressRequired)
+                .Required(x => x.PostalCode, Resources.PostalCodeRequired)
+                .Required(x => x.Phone, Resources.PhoneRequired)
+                .MustBeTrue(x => x.AddressLine1.Length <= 50, Resources.AddressMax)
+                .MustBeTrue(x => x.AddressLine2.Length <= 50, Resources.Address2Max)
+                .MustBeTrue(x => x.PostalCode.Length <= 10, Resources.PostalCodeMax)
+                .MustBeTrue(x => x.Phone.Length <= 20, Resources.PhoneMax)
+                .MustBeTrue(x => txtPhoneNumber.IsTextValid, Resources.PhoneInvalidFormat)
+                .MustBeTrue(x => x.CityId > 0, Resources.CityRequired)
+                .Validate();
 
-            if (!(cbCity.SelectedItem is SelectListItem))
-            {
-                sb.AppendLine(Resources.CityRequired);
-                isValid = false;
-            }
 
-            if (string.IsNullOrWhiteSpace(txtPostalCode.Text))
+            if (validationErrors.Count > 0)
             {
-                sb.AppendLine(Resources.PostalCodeRequired);
-                isValid = false;
-            }
-
-            if (txtPostalCode.Text.Length > 10)
-            {
-                sb.AppendLine(Resources.PostalCodeMax);
-                isValid = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
-            {
-                sb.AppendLine(Resources.PhoneRequired);
-                isValid = false;
-            }
-
-            if (txtPhoneNumber.Text.Length > 20)
-            {
-                sb.AppendLine(Resources.PhoneMax);
-                isValid = false;
-            }
-
-            if (!txtPhoneNumber.IsTextValid)
-            {
-                sb.AppendLine(Resources.PhoneInvalidFormat);
-                isValid = false;
-            }
-
-            if (!isValid)
-            {
+                foreach (ValidationError validationError in validationErrors)
+                {
+                    sb.AppendLine(validationError.ErrorMessage);
+                }
                 pnlValidationErrors.Visible = true;
                 lblValidationErrors.Text = sb.ToString();
+                isValid = false;
             }
 
             return isValid;

@@ -50,9 +50,6 @@ namespace Scheduler.Forms
         {
             if (IsValid())
             {
-                _user.UserName = txtUsername.Text;
-                _user.Password = txtPassword.Text;
-                _user.Active = cbActive.Checked;
                 _user.CreateDate = _user.CreateDate == DateTime.MinValue ? DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _user.CreateDate;
                 _user.CreatedBy = string.IsNullOrWhiteSpace(_user.CreatedBy) ? _userSession.User.UserName : _user.CreatedBy; 
                 _user.LastUpdate = DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
@@ -97,43 +94,35 @@ namespace Scheduler.Forms
             lblValidationErrors.Text = string.Empty;
             lblValidationErrors.Visible = false;
 
-            if (txtUsername.Text.Length > 50)
+            _user.UserName = txtUsername.Trim();
+            _user.Password = txtPassword.Trim();
+            _user.Active = cbActive.Checked;
+
+            var validationErrors = new Validator<User>(_user)
+                .Required(x => x.UserName, Resources.UserNameRequired)
+                .MustBeTrue(x => x.UserName.Length <= 50, Resources.UserNameMax)
+                .Required(x => x.Password, Resources.PasswordRequired)
+                .MustBeTrue(x => x.Password.Length <= 50, Resources.PasswordMax)
+                .CustomRule(x => PasswordCompare(x.Password, txtPasswordConfirm.Trim()), Resources.PasswordMustMatch)
+                .Validate();
+
+            if (validationErrors.Count > 0)
             {
                 isValid = false;
-                sb.AppendLine(Resources.UserNameMax);
-            }
-
-            if (txtUsername.Text.Length == 0)
-            {
-                isValid = false;
-                sb.AppendLine(Resources.UserNameRequired);
-            }
-
-            if (txtPassword.Text.Length > 50)
-            {
-                isValid = false;
-                sb.AppendLine(Resources.PasswordMax);
-            }
-
-            if (txtPassword.Text.Length == 0)
-            {
-                isValid = false;
-                sb.AppendLine(Resources.PasswordRequired);
-            }
-
-            if (txtPassword.Text != txtPasswordConfirm.Text)
-            {
-                isValid = false;
-                sb.AppendLine(Resources.PasswordRequired);
-            }
-
-            if (isValid == false)
-            {
+                foreach (ValidationError validationError in validationErrors)
+                {
+                    sb.AppendLine(validationError.ErrorMessage);
+                }
                 lblValidationErrors.Text = sb.ToString();
                 lblValidationErrors.Visible = true;
             }
 
             return isValid;
+        }
+
+        private static bool PasswordCompare(string password, string passwordConfirm)
+        {
+            return password == passwordConfirm;
         }
 
         #endregion

@@ -124,6 +124,8 @@
     <Compile Include="Core\Utility\DateTimeConverter.cs" />
     <Compile Include="Core\Utility\Dialog.cs" />
     <Compile Include="Core\Utility\StringExtension.cs" />
+    <Compile Include="Core\Utility\TextBoxExtension.cs" />
+    <Compile Include="Core\Utility\Validator.cs" />
     <Compile Include="Forms\Appointments.cs">
       <SubType>Form</SubType>
     </Compile>

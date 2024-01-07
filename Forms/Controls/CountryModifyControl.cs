@@ -28,7 +28,6 @@ namespace Scheduler.Forms.Controls
         {
             if (IsValid())
             {
-                _country.CountryName = txtCountry.Text;
                 _country.CreateDate = _country.CreateDate == DateTime.MinValue ? DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _country.CreateDate;
                 _country.CreatedBy = string.IsNullOrWhiteSpace(_country.CreatedBy) ? _userSession.User.UserName : _country.CreatedBy; 
                 _country.LastUpdate = DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now);
@@ -77,22 +76,22 @@ namespace Scheduler.Forms.Controls
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
 
-            if (string.IsNullOrWhiteSpace(txtCountry.Text))
-            {
-                sb.AppendLine(Resources.CountryRequired);
-                isValid = false;
-            }
+            _country.CountryName = txtCountry.Trim();
 
-            if (txtCountry.Text.Length > 50)
-            {
-                sb.AppendLine(Resources.CountryMax);
-                isValid = false;
-            }
+            var validationErrors = new Validator<Country>(_country)
+                .Required(x => x.CountryName, Resources.CountryRequired)
+                .MustBeTrue(x => x.CountryName.Length <= 50, Resources.CountryMax)
+                .Validate();
 
-            if (!isValid)
+            if (validationErrors.Count > 0)
             {
+                foreach (ValidationError validationError in validationErrors)
+                {
+                    sb.AppendLine(validationError.ErrorMessage);
+                }
                 pnlValidationErrors.Visible = true;
                 lblValidationErrors.Text = sb.ToString();
+                isValid = false;
             }
 
             return isValid;

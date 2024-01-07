@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Scheduler.Core.Localization;
 using Scheduler.Core.Models;
 using Scheduler.Core.Services;
+using Scheduler.Core.Utility;
 using Scheduler.Forms.Controls;
 
 namespace Scheduler.Forms
@@ -104,14 +105,6 @@ namespace Scheduler.Forms
         {
             if (IsValid())
             {
-                var addressId = 0;
-                if (cbAddress.SelectedItem != null)
-                {
-                    addressId = (cbAddress.SelectedItem as SelectListItem).Id;
-                }
-
-                _customer.CustomerName = txtCustomerName.Text;
-                _customer.AddressId = addressId;
                 _customer.IsActive = cbActive.Checked;
                 _customer.CreateDate = _customer.CreateDate == DateTime.MinValue ? Core.Utility.DateTimeConverter.DateTimeOffsetToUtc(DateTime.Now) : _customer.CreateDate;
                 _customer.CreatedBy = string.IsNullOrWhiteSpace(_customer.CreatedBy) ? _userSession.User.UserName : _customer.CreatedBy; 
@@ -146,28 +139,30 @@ namespace Scheduler.Forms
             pnlValidationErrors.Visible = false;
             lblValidationErrors.Text = string.Empty;
 
-            if (string.IsNullOrEmpty(txtCustomerName.Text))
+            var addressId = 0;
+            if (cbAddress.SelectedItem != null)
             {
-                sb.AppendLine(Resources.CustomerNameRequired);
-                isValid = false;
+                addressId = (cbAddress.SelectedItem as SelectListItem).Id;
             }
 
-            if (txtCustomerName.Text.Length > 45)
-            {
-                sb.AppendLine(Resources.CustomerNameMax);
-                isValid = false;
-            }
+            _customer.CustomerName = txtCustomerName.Trim();
+            _customer.AddressId = addressId;
 
-            if (!(cbAddress.SelectedItem is SelectListItem))
-            {
-                sb.AppendLine(Resources.AddressRequired);
-                isValid = false;
-            }
+            var validationErrors = new Validator<Customer>(_customer)
+                .Required(x => x.CustomerName, Resources.CustomerNameRequired)
+                .MustBeTrue(x => x.CustomerName.Length <= 45, Resources.CustomerNameMax)
+                .MustBeTrue(x => x.AddressId > 0, Resources.AddressRequired)
+                .Validate();
 
-            if (!isValid)
+            if (validationErrors.Count > 0)
             {
+                foreach (ValidationError validationError in validationErrors)
+                {
+                    sb.AppendLine(validationError.ErrorMessage);
+                }
                 pnlValidationErrors.Visible = true;
                 lblValidationErrors.Text = sb.ToString();
+                isValid = false;
             }
 
             return isValid;
