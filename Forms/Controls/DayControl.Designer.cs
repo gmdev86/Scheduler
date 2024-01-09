@@ -35,6 +35,7 @@ namespace Scheduler.Forms.Controls
             this.lblAppointments = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnAddEvent = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblDay
@@ -52,7 +53,7 @@ namespace Scheduler.Forms.Controls
             // 
             this.lblCount.AutoSize = true;
             this.lblCount.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCount.Location = new System.Drawing.Point(36, 62);
+            this.lblCount.Location = new System.Drawing.Point(36, 47);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(20, 24);
             this.lblCount.TabIndex = 2;
@@ -61,7 +62,7 @@ namespace Scheduler.Forms.Controls
             // lblAppointments
             // 
             this.lblAppointments.AutoSize = true;
-            this.lblAppointments.Location = new System.Drawing.Point(14, 49);
+            this.lblAppointments.Location = new System.Drawing.Point(14, 33);
             this.lblAppointments.Name = "lblAppointments";
             this.lblAppointments.Size = new System.Drawing.Size(71, 13);
             this.lblAppointments.TabIndex = 3;
@@ -86,11 +87,31 @@ namespace Scheduler.Forms.Controls
             this.btnAddEvent.MouseEnter += new System.EventHandler(this.btnAddEvent_MouseEnter);
             this.btnAddEvent.MouseLeave += new System.EventHandler(this.btnAddEvent_MouseLeave);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.White;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Image = global::Scheduler.Properties.Resources.pencil_003_16xMD;
+            this.btnEdit.Location = new System.Drawing.Point(60, 64);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(32, 32);
+            this.btnEdit.TabIndex = 4;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Visible = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseEnter += new System.EventHandler(this.btnEdit_MouseEnter);
+            this.btnEdit.MouseLeave += new System.EventHandler(this.btnEdit_MouseLeave);
+            // 
             // DayControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblAppointments);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.btnAddEvent);
@@ -111,5 +132,6 @@ namespace Scheduler.Forms.Controls
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.Label lblAppointments;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

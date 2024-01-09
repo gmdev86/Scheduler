@@ -24,6 +24,7 @@ namespace Scheduler.Forms.Controls
             _day = DateTime.Now.Day;
             _appointments = new BindingList<Appointment>();
             toolTip1.Active = false;
+            btnEdit.Visible = false;
         }
 
         public DayControl(int year, int month, int day, BindingList<Appointment> appointments,  bool allowAddEvent = true)
@@ -43,6 +44,11 @@ namespace Scheduler.Forms.Controls
                 {
                     lblCount.Text = appointments.Count.ToString();
                     lblAppointments.Visible = true;
+                    btnEdit.Visible = true;
+                }
+                else
+                {
+                    btnEdit.Visible = false;
                 }
 
                 toolTip1.Active = true;
@@ -137,6 +143,21 @@ namespace Scheduler.Forms.Controls
                 this.ParentForm.Enabled = false;
             }
             dynamicForm.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            OpenDynamicForm();
+        }
+
+        private void btnEdit_MouseEnter(object sender, EventArgs e)
+        {
+            btnEdit.Cursor = Cursors.Hand;
+        }
+
+        private void btnEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnEdit.Cursor = Cursors.Default;
         }
     }
 }
