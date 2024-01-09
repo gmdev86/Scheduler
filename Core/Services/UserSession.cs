@@ -1,7 +1,6 @@
 ﻿using Scheduler.Core.Models;
 using System;
 using System.Globalization;
-using System.Resources;
 
 namespace Scheduler.Core.Services
 {
@@ -45,6 +44,13 @@ namespace Scheduler.Core.Services
         private void LogLoginHistory()
         {
             string logMessage = $"{DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")} - User '{_user.UserName}' logged in.";
+            string filePath = "Login_History.txt";
+            System.IO.File.AppendAllText(filePath, logMessage + Environment.NewLine);
+        }
+
+        public void LogLoginAttempted(string errorMessage = "")
+        {
+            string logMessage = $"{DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")} - Log in attempted {errorMessage}";
             string filePath = "Login_History.txt";
             System.IO.File.AppendAllText(filePath, logMessage + Environment.NewLine);
         }

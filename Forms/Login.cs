@@ -39,10 +39,12 @@ namespace Scheduler.Forms
                         {
                             pnlValidationErrors.Visible = true;
                             lblValidationErrors.Text = Resources.PasswordDatabaseMatch;
+                            _userSession.LogLoginAttempted(Resources.PasswordDatabaseMatch);
                         } else if (!user.Active)
                         {
                             pnlValidationErrors.Visible = true;
                             lblValidationErrors.Text = Resources.UserNotActive;
+                            _userSession.LogLoginAttempted(Resources.UserNotActive);
                         }
                         else
                         {
@@ -78,6 +80,7 @@ namespace Scheduler.Forms
                 }
                 catch (Exception ex)
                 {
+                    _userSession.LogLoginAttempted();
                     MessageBox.Show($"{Resources.Error}: {ex.Message}", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
