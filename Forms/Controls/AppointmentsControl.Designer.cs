@@ -37,6 +37,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
@@ -68,6 +69,7 @@
             this.pnlFooter.AutoSize = true;
             this.pnlFooter.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlFooter.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlFooter.Controls.Add(this.btnEdit);
             this.pnlFooter.Controls.Add(this.btnCancel);
             this.pnlFooter.Controls.Add(this.btnDelete);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -161,6 +163,19 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Appointments";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::Scheduler.Properties.Resources.pencil_003_16xMD;
+            this.btnEdit.Location = new System.Drawing.Point(739, 12);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 38);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // AppointmentsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,5 +206,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

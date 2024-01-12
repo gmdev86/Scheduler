@@ -14,10 +14,12 @@ namespace Scheduler.Forms.Controls
     {
         public event EventHandler CancelClicked;
         public event EventHandler DeleteClicked;
+        public event EventHandler AppointmentUpdated;
         private BindingList<Appointment> _appointments;
         private BindingList<Appointment> _originalAppointments;
         private BindingSource _appointmentsBindingSource;
         private DataService _dataService;
+        private Form dynamicForm;
 
         public AppointmentsControl()
         {
@@ -119,6 +121,84 @@ namespace Scheduler.Forms.Controls
                 DateTime convertedDateTime = DateTimeConverter.UtcToLocalDateTime(originalDateTime);
                 e.Value = convertedDateTime;
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvAppointments.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgvAppointments.SelectedRows[0];
+
+                try
+                {
+                    Appointment appointment = new Appointment
+                    {
+                        AppointmentId = (int)selectedRow.Cells["AppointmentId"].Value,
+                        CustomerId = (int)selectedRow.Cells["CustomerId"].Value,
+                        UserId = (int)selectedRow.Cells["UserId"].Value,
+                        Title = (string)selectedRow.Cells["Title"].Value,
+                        Description = (string)selectedRow.Cells["Description"].Value,
+                        Contact = (string)selectedRow.Cells["Contact"].Value,
+                        Location = (string)selectedRow.Cells["Location"].Value,
+                        Type = (string)selectedRow.Cells["Type"].Value,
+                        Url = (string)selectedRow.Cells["Url"].Value,
+                        Start = (DateTime)selectedRow.Cells["Start"].Value,
+                        End = (DateTime)selectedRow.Cells["End"].Value,
+                        CreatedBy = (string)selectedRow.Cells["CreatedBy"].Value,
+                        CreateDate = (DateTime)selectedRow.Cells["CreateDate"].Value,
+                        LastUpdateBy = (string)selectedRow.Cells["LastUpdateBy"].Value,
+                        LastUpdate = (DateTime)selectedRow.Cells["LastUpdate"].Value
+                    };
+                    dynamicForm = new Form();
+                    AppointmentModifyControl appointmentModifyControl =
+                        new AppointmentModifyControl(appointment, _appointments);
+                    appointmentModifyControl.CancelClicked += Dynamic_FormCanceled;
+                    appointmentModifyControl.SaveClicked += Dynamic_FormSaved;
+                    dynamicForm.Controls.Add(appointmentModifyControl);
+                    dynamicForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                    dynamicForm.AutoSize = true;
+                    dynamicForm.Text = Resources.AppointmentAdministration;
+                    dynamicForm.StartPosition = FormStartPosition.CenterScreen;
+                    dynamicForm.ControlBox = false;
+                    if (this.ParentForm != null)
+                    {
+                        this.ParentForm.Enabled = false;
+                    }
+                    dynamicForm.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{Resources.Error}: {ex.Message}", Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show(Resources.SelectAppointment, Resources.AppointmentNotSelected, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Dynamic_FormCanceled(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+            dynamicForm?.Close();
+        }
+
+        private void Dynamic_FormSaved(object sender, EventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+            dynamicForm?.Close();
+            DateTime day = _appointments[0].Start.Date;
+            _appointments = _dataService.GetAllAppointments();
+            var updatedList = _appointments.Where(x => x.Start.Date == day.Date).ToList();
+            _appointments = new BindingList<Appointment>(updatedList);
+            LoadData();
+            AppointmentUpdated?.Invoke(sender, e);
         }
     }
 }

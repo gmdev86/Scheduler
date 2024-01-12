@@ -144,6 +144,12 @@
     <Compile Include="Forms\Controls\AddressModifyControl.Designer.cs">
       <DependentUpon>AddressModifyControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\AppointmentModifyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\AppointmentModifyControl.Designer.cs">
+      <DependentUpon>AppointmentModifyControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\AppointmentsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -301,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\AddressModifyControl.resx">
       <DependentUpon>AddressModifyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\AppointmentModifyControl.resx">
+      <DependentUpon>AppointmentModifyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\AppointmentsControl.resx">
       <DependentUpon>AppointmentsControl.cs</DependentUpon>

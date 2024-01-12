@@ -126,12 +126,23 @@ namespace Scheduler.Forms.Controls
             AppointmentDeleted?.Invoke(this, EventArgs.Empty);
         }
 
+        private void OnDynamicSave(object sender, System.EventArgs e)
+        {
+            if (this.ParentForm != null)
+            {
+                this.ParentForm.Enabled = true;
+            }
+            dynamicForm?.Close();
+            AppointmentSaved?.Invoke(sender, e);
+        }
+
         private void OpenDynamicForm()
         {
             dynamicForm = new Form();
             AppointmentsControl appointmentsControl = new AppointmentsControl(_appointments);
             appointmentsControl.CancelClicked += OnDynamicClose;
             appointmentsControl.DeleteClicked += OnDynamicDelete;
+            appointmentsControl.AppointmentUpdated += OnDynamicSave;
             dynamicForm.Controls.Add(appointmentsControl);
             dynamicForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             dynamicForm.AutoSize = true;

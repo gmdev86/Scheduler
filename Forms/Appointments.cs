@@ -45,7 +45,7 @@ namespace Scheduler.Forms
             timeSlotsControl.Year = Year;
             timeSlotsControl.Month = Month;
             timeSlotsControl.Day = Day;
-            _dataService = new DataService();
+            _dataService = DataService.Instance;
             _userListItems = new BindingList<SelectListItem>();
             _customerListItems = new BindingList<SelectListItem>();
             _userListItems = _dataService.LoadItems("user", true);

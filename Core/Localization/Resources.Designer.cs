@@ -178,6 +178,15 @@ namespace Scheduler.Core.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointment successfully updated!.
+        /// </summary>
+        public static string AppointmentUpdated {
+            get {
+                return ResourceManager.GetString("AppointmentUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete this item?.
         /// </summary>
         public static string AreYouSureDelete {
@@ -679,6 +688,15 @@ namespace Scheduler.Core.Localization {
             get {
                 object obj = ResourceManager.GetObject("square_plus_green30x30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Required.
+        /// </summary>
+        public static string TimeRequired {
+            get {
+                return ResourceManager.GetString("TimeRequired", resourceCulture);
             }
         }
         
